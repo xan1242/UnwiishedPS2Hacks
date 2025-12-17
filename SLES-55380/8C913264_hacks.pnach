@@ -16,6 +16,8 @@ author=xan1242
 comment=Enables the widescreen mode flag in the default system configuration.
 patch=1,EE,20753F08,byte,01
 [Allow movie skipping everywhere]
+author=xan1242
+comment=Allows you to skip movies at any point.
 patch=1,EE,2040E7B4,extended,00000000
 [60FPS Mode (BUGGY)]
 author=xan1242
