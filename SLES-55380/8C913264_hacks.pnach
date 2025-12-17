@@ -15,6 +15,10 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 author=xan1242
 comment=Enables the widescreen mode flag in the default system configuration.
 patch=1,EE,20753F08,byte,01
+[Ultrawide Ratio]
+author=xan1242
+comment=Requires "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
+patch=1,EE,208700CC,extended,400D2BF2
 [Allow movie skipping everywhere]
 author=xan1242
 comment=Allows you to skip movies at any point.
