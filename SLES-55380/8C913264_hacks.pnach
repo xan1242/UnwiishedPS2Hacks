@@ -25,9 +25,19 @@ comment=Allows you to skip movies at any point.
 patch=1,EE,2040E7B4,extended,00000000
 [Disable Chip's Messages]
 author=xan1242
-comment=Stops Chip's tutorial messages by preventing the TChipTalk task from starting up.
-patch=1,EE,203F4B00,extended,03E00008
-patch=1,EE,203F4B04,extended,00000000
+comment=Stops Chip's tutorial messages by preventing the TChipTalk task from starting up. (Except in Gaia Gates/Entrance Stages)
+patch=1,EE,2076D4F0,extended,3C020087      // lui v0, 0x87
+patch=1,EE,2076D4F4,extended,24423450      // addiu v0, v0, 0x3450
+patch=1,EE,2076D4F8,extended,8C420000      // lw v0, 0(v0) -- check the CEntrance singleton at 0x873450
+patch=1,EE,2076D4FC,extended,10400003      // beqz v0, nogaia (0x0076D50C)
+patch=1,EE,2076D500,extended,00000000      // nop
+patch=1,EE,2076D504,extended,080F72FC      // j 0x3DCBF0 -- proceed with the usual function...
+patch=1,EE,2076D508,extended,00000000      // nop
+                                           // nogaia:
+patch=1,EE,2076D50C,extended,03E00008      // jr ra
+patch=1,EE,2076D510,extended,00001021      // move v0, zero
+// entrypoint
+patch=1,EE,203F4B2C,extended,0C1DB53C      // jal 0x76D4F0
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
