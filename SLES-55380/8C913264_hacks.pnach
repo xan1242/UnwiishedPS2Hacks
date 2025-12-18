@@ -4,6 +4,7 @@ gametitle=Sonic Unleashed [SLES-55380] (E)
 author=xan1242
 comment=When holding X+Triangle during bootup, it will ask for Progressive Scan instead of 60Hz Mode.
 patch=1,EE,2068EF3C,extended,081A3BC6
+
 [Force Progressive Scan Mode]
 author=xan1242
 comment=Force-enables progressive scan output after the game initializes.
@@ -15,14 +16,17 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 author=xan1242
 comment=Enables the widescreen mode flag in the default system configuration.
 patch=1,EE,20753F08,byte,01
+
 [Ultrawide Ratio]
 author=xan1242
 comment=Requires "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
 patch=1,EE,208700CC,extended,400D2BF2
+
 [Allow movie skipping everywhere]
 author=xan1242
 comment=Allows you to skip movies at any point.
 patch=1,EE,2040E7B4,extended,00000000
+
 [Disable Chip's Messages]
 author=xan1242
 comment=Stops Chip's tutorial messages by preventing the TChipTalk task from starting up. (Except in Gaia Gates/Entrance Stages)
@@ -38,6 +42,7 @@ patch=1,EE,2076D50C,extended,03E00008      // jr ra
 patch=1,EE,2076D510,extended,00001021      // move v0, zero
 // entrypoint
 patch=1,EE,203F4B2C,extended,0C1DB53C      // jal 0x76D4F0
+
 [Disable Werehog Battle Music]
 author=xan1242
 comment=Disables the battle music in Werehog stages. (Except for stage bosses)
@@ -51,10 +56,17 @@ patch=1,EE,2076D528,extended,03E00008      // jr ra
 patch=1,EE,2076D52C,extended,00000000      // nop
 // entrypoint
 patch=1,EE,20403C74,extended,0C1DB545      // jal 0x76D514
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
 patch=1,EE,200D91A4,extended,08036476
+
+[640x480]
+author=xan1242
+comment=Sets the screen resolution to 640x480
+patch=1,EE,204FE384,extended,24050280
+patch=1,EE,204FE38C,extended,240201E0
 
 [Redirect ADXRT errors to stdout]
 author=xan1242
