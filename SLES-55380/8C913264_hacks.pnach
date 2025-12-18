@@ -23,6 +23,11 @@ patch=1,EE,208700CC,extended,400D2BF2
 author=xan1242
 comment=Allows you to skip movies at any point.
 patch=1,EE,2040E7B4,extended,00000000
+[Disable Chip's Messages]
+author=xan1242
+comment=Stops Chip's tutorial messages by preventing the TChipTalk task from starting up.
+patch=1,EE,203F4B00,extended,03E00008
+patch=1,EE,203F4B04,extended,00000000
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
