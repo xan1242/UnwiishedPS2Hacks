@@ -14,13 +14,61 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 
 [Enable Widescreen Mode]
 author=xan1242
-comment=Enables the widescreen mode flag in the default system configuration.
+comment=Do NOT enable with "Ultrawide Aspect Ratio". Enables the widescreen mode flag in the default system configuration and patches the UI values.
+// #TODO: adjust boss health bars
+// #TODO: CConverse/text spacing fixes
+// #TODO: Movies
 patch=1,EE,20753F08,byte,01
+patch=1,EE,20218470,extended,00000000
+// set CSD res to 854x480
+patch=1,EE,20871490,extended,44554000
+patch=1,EE,20871494,extended,43F00000
+// redirect font X size to a different address (0x815120)
+// shuffle instructions around to preserve v0...
+patch=1,EE,20345460,extended,C4405120
+patch=1,EE,20345464,extended,8FA20080
+patch=1,EE,20345468,extended,AC430064
+patch=1,EE,203458B4,extended,C4405120
+patch=1,EE,203458B8,extended,8FA200B0
+patch=1,EE,203458BC,extended,AC430064
+// set font draw size / aspect ratio (CConverse)
+patch=1,EE,20815120,extended,3F400000
+patch=1,EE,20870104,extended,3F800000
+// fix bars width - vanilla value (0.8) * wii value (0.75029308)
+patch=1,EE,20871DE4,extended,3F19A8F7
+// fix Werehog health bar fill X position
+patch=1,EE,20871E44,extended,41500000
 
-[Ultrawide Ratio]
+[Ultrawide Aspect Ratio]
 author=xan1242
-comment=Requires "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
+comment=Do NOT enable with "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
+// #TODO: fix werehog minimap scaling
+// #TODO: adjust boss health bars
+// #TODO: Movies
 patch=1,EE,208700CC,extended,400D2BF2
+patch=1,EE,20753F08,byte,01
+// set CSD res to 1147x480
+patch=1,EE,20218470,extended,00000000
+patch=1,EE,20871490,extended,448F6000
+patch=1,EE,20871494,extended,43F00000
+// redirect font X size to a different address (0x815120)
+// shuffle instructions around to preserve v0...
+patch=1,EE,20345460,extended,C4405120
+patch=1,EE,20345464,extended,8FA20080
+patch=1,EE,20345468,extended,AC430064
+patch=1,EE,203458B4,extended,C4405120
+patch=1,EE,203458B8,extended,8FA200B0
+patch=1,EE,203458BC,extended,AC430064
+// set font draw size / aspect ratio (CConverse) -- VERY BUGGY
+//patch=1,EE,20815120,extended,3F0EE23C
+//patch=1,EE,20870104,extended,3F800000
+// #TODO: 16by9 CConverse FOR NOW
+patch=1,EE,20815120,extended,3F400000
+patch=1,EE,20870104,extended,3F800000
+// fix bars width - vanilla value (0.8) * wii value (0.75029308) * ultrawide scaling factor (0.744186046511628)
+patch=1,EE,20871DE4,extended,3EE4B40B
+// fix Werehog health bar fill X position
+patch=1,EE,20871E44,extended,41200000
 
 [Allow movie skipping everywhere]
 author=xan1242
