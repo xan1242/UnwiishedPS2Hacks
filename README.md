@@ -4,13 +4,13 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 ## TODO:
 
-- figure out time scaling issues
+- figure out time scaling issues for 60FPS
 
 - remap actions to other buttons
 
 - port to other regions (currently only SLES-55380 PAL-E is supported)
 
-- figure out UI scaling for widescreen
+- figure out UI scaling for widescreen -- partially done, needs a few finishing touches...
 
 ## Host filesystem usage
 
