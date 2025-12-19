@@ -110,11 +110,10 @@ author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
 patch=1,EE,200D91A4,extended,08036476
 
-[640x480]
+[640x448]
 author=xan1242
-comment=Sets the screen resolution to 640x480
+comment=Sets the screen resolution to 640x448
 patch=1,EE,204FE384,extended,24050280
-patch=1,EE,204FE38C,extended,240201E0
 
 [Redirect ADXRT errors to stdout]
 author=xan1242
