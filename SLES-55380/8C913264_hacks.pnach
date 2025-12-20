@@ -16,8 +16,8 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 author=xan1242
 comment=Do NOT enable with "Ultrawide Aspect Ratio". Enables the widescreen mode flag in the default system configuration and patches the UI values.
 // #TODO: adjust boss health bars
-// #TODO: CConverse/text spacing fixes
 // #TODO: Movies
+// #TODO: Werehog upgrade window bars
 patch=1,EE,20753F08,byte,01
 patch=1,EE,20218470,extended,00000000
 // set CSD res to 854x480
@@ -34,6 +34,19 @@ patch=1,EE,203458BC,extended,AC430064
 // set font draw size / aspect ratio (CConverse)
 patch=1,EE,20815120,extended,3F400000
 patch=1,EE,20870104,extended,3F800000
+// fix font kerning
+// global font spacing hook
+patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
+patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
+patch=1,EE,2076D538,extended,C4400000 // lwc1 f0, 0(v0)
+patch=1,EE,2076D53C,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,2076D540,extended,080D1090 // j 0x344240
+patch=1,EE,2076D544,extended,00000000 // nop
+// entrypoint
+patch=1,EE,20344238,extended,081DB54C // j 0x76D530
+patch=1,EE,2034423C,extended,00000000 // nop
+// value
+patch=1,EE,20820478,extended,3F19999A // nominal: 0.8, this: 0.6
 // fix bars width - vanilla value (0.8) * wii value (0.75029308)
 patch=1,EE,20871DE4,extended,3F19A8F7
 // fix Werehog health bar fill X position
@@ -59,12 +72,22 @@ patch=1,EE,20345468,extended,AC430064
 patch=1,EE,203458B4,extended,C4405120
 patch=1,EE,203458B8,extended,8FA200B0
 patch=1,EE,203458BC,extended,AC430064
-// set font draw size / aspect ratio (CConverse) -- VERY BUGGY
-//patch=1,EE,20815120,extended,3F0EE23C
-//patch=1,EE,20870104,extended,3F800000
-// #TODO: 16by9 CConverse FOR NOW
-patch=1,EE,20815120,extended,3F400000
+// set font draw size / aspect ratio (CConverse)
+patch=1,EE,20815120,extended,3F0EE23C
 patch=1,EE,20870104,extended,3F800000
+// fix font kerning
+// global font spacing hook
+patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
+patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
+patch=1,EE,2076D538,extended,C4400000 // lwc1 f0, 0(v0)
+patch=1,EE,2076D53C,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,2076D540,extended,080D1090 // j 0x344240
+patch=1,EE,2076D544,extended,00000000 // nop
+// entrypoint
+patch=1,EE,20344238,extended,081DB54C // j 0x76D530
+patch=1,EE,2034423C,extended,00000000 // nop
+// value
+patch=1,EE,20820478,extended,3EE49D2C // nominal: 0.8, this: 0.44651163
 // fix bars width - vanilla value (0.8) * wii value (0.75029308) * ultrawide scaling factor (0.744186046511628)
 patch=1,EE,20871DE4,extended,3EE4B40B
 // fix Werehog health bar fill X position
