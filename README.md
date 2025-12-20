@@ -12,6 +12,8 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 - figure out UI scaling for widescreen -- partially done, needs a few finishing touches...
 
+- add option to remove the "Continue playing?" dialog...
+
 ## Host filesystem usage
 
 1. Ensure that you have "Enable Host Filesystem" enabled in your PCSX2 settings (or `EmuCore/HostFs` enabled in the PCSX2.ini)
