@@ -96,6 +96,15 @@ patch=1,EE,20871DE4,extended,3EE4B40B
 patch=1,EE,20871E44,extended,4105F418
 // fix Werehog unleash bar fill X position
 patch=1,EE,20871E50,extended,40B29ACA
+// fix Werehog minimap
+// scale X
+patch=1,EE,204E605C,extended,3C0341AC
+// pos X
+patch=1,EE,20870470,extended,4184399A
+// 3d model transforms
+patch=1,EE,204E4A78,extended,3C02430A
+patch=1,EE,204E5B5C,extended,3C02430A
+patch=1,EE,204E4E74,extended,3C0242D7
 
 [Allow movie skipping everywhere]
 author=xan1242
