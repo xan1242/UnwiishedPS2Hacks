@@ -50,7 +50,9 @@ patch=1,EE,20820478,extended,3F19999A // nominal: 0.8, this: 0.6
 // fix bars width - vanilla value (0.8) * wii value (0.75029308)
 patch=1,EE,20871DE4,extended,3F19A8F7
 // fix Werehog health bar fill X position
-patch=1,EE,20871E44,extended,41500000
+patch=1,EE,20871E44,extended,41340000
+// fix Werehog unleash bar fill X position
+patch=1,EE,20871E50,extended,40F00000
 
 [Ultrawide Aspect Ratio]
 author=xan1242
@@ -91,7 +93,9 @@ patch=1,EE,20820478,extended,3EE49D2C // nominal: 0.8, this: 0.44651163
 // fix bars width - vanilla value (0.8) * wii value (0.75029308) * ultrawide scaling factor (0.744186046511628)
 patch=1,EE,20871DE4,extended,3EE4B40B
 // fix Werehog health bar fill X position
-patch=1,EE,20871E44,extended,41200000
+patch=1,EE,20871E44,extended,4105F418
+// fix Werehog unleash bar fill X position
+patch=1,EE,20871E50,extended,40B29ACA
 
 [Allow movie skipping everywhere]
 author=xan1242
