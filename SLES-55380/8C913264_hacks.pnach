@@ -17,6 +17,7 @@ author=xan1242
 comment=Do NOT enable with "Ultrawide Aspect Ratio". Enables the widescreen mode flag in the default system configuration and patches the UI values.
 // #TODO: adjust boss health bars
 // #TODO: Movies
+// #TODO: documents menu, movies menu
 patch=1,EE,20753F08,byte,01
 patch=1,EE,20218470,extended,00000000
 // set CSD res to 854x480
@@ -68,6 +69,7 @@ author=xan1242
 comment=Do NOT enable with "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
 // #TODO: adjust boss health bars
 // #TODO: Movies
+// #TODO: documents menu, movies menu
 patch=1,EE,208700CC,extended,400D2BF2
 patch=1,EE,20753F08,byte,01
 // set CSD res to 1147x480
