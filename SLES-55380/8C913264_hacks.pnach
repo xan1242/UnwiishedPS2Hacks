@@ -45,7 +45,7 @@ patch=1,EE,2076D544,extended,00000000 // nop
 patch=1,EE,20344238,extended,081DB54C // j 0x76D530
 patch=1,EE,2034423C,extended,00000000 // nop
 // value
-patch=1,EE,20820478,extended,3F19999A // nominal: 0.8, this: 0.6
+patch=1,EE,20820478,extended,3F400000 // nominal: 0.8, this: 0.75
 // fix bars width - vanilla value (0.8) * wii value (0.75029308)
 patch=1,EE,20871DE4,extended,3F19A8F7
 // fix Werehog health bar fill X position
@@ -94,7 +94,7 @@ patch=1,EE,2076D544,extended,00000000 // nop
 patch=1,EE,20344238,extended,081DB54C // j 0x76D530
 patch=1,EE,2034423C,extended,00000000 // nop
 // value
-patch=1,EE,20820478,extended,3EE49D2C // nominal: 0.8, this: 0.44651163
+patch=1,EE,20820478,extended,3F0EE23C // nominal: 0.8, this: 0.5581395375
 // fix bars width - vanilla value (0.8) * wii value (0.75029308) * ultrawide scaling factor (0.744186046511628)
 patch=1,EE,20871DE4,extended,3EE4B40B
 // fix Werehog health bar fill X position
