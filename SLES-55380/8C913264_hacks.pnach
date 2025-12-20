@@ -34,6 +34,9 @@ patch=1,EE,203458BC,extended,AC430064
 patch=1,EE,20815120,extended,3F400000
 patch=1,EE,20870104,extended,3F800000
 // fix font kerning
+// world map mission list
+patch=1,EE,20871F54,extended,C0800000
+patch=1,EE,20871F4C,extended,C0666666
 // global font spacing hook
 patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
 patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
@@ -83,6 +86,9 @@ patch=1,EE,203458BC,extended,AC430064
 patch=1,EE,20815120,extended,3F0EE23C
 patch=1,EE,20870104,extended,3F800000
 // fix font kerning
+// world map mission list
+patch=1,EE,20871F54,extended,C0800000
+patch=1,EE,20871F4C,extended,C0666666
 // global font spacing hook
 patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
 patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
@@ -94,7 +100,7 @@ patch=1,EE,2076D544,extended,00000000 // nop
 patch=1,EE,20344238,extended,081DB54C // j 0x76D530
 patch=1,EE,2034423C,extended,00000000 // nop
 // value
-patch=1,EE,20820478,extended,3F0EE23C // nominal: 0.8, this: 0.5581395375
+patch=1,EE,20820478,extended,3F009869 // nominal: 0.8, this: 0.50232558375
 // fix bars width - vanilla value (0.8) * wii value (0.75029308) * ultrawide scaling factor (0.744186046511628)
 patch=1,EE,20871DE4,extended,3EE4B40B
 // fix Werehog health bar fill X position
