@@ -29,11 +29,10 @@ patch=1,EE,20871F54,extended,C0800000
 patch=1,EE,20871F4C,extended,C0666666
 // global font spacing hook
 patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
-patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
-patch=1,EE,2076D538,extended,C4400000 // lwc1 f0, 0(v0)
-patch=1,EE,2076D53C,extended,46000802 // mul.s f0, f1, f0
-patch=1,EE,2076D540,extended,080D1090 // j 0x344240
-patch=1,EE,2076D544,extended,00000000 // nop
+patch=1,EE,2076D534,extended,C4400478 // lwc1 f0, 0x478(v0)
+patch=1,EE,2076D538,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,2076D53C,extended,080D1090 // j 0x344240
+patch=1,EE,2076D540,extended,00000000 // nop
 // entrypoint
 patch=1,EE,20344238,extended,081DB54C // j 0x76D530
 patch=1,EE,2034423C,extended,00000000 // nop
@@ -75,11 +74,10 @@ patch=1,EE,20871F54,extended,C0800000
 patch=1,EE,20871F4C,extended,C0666666
 // global font spacing hook
 patch=1,EE,2076D530,extended,3C020082 // lui v0, 0x82
-patch=1,EE,2076D534,extended,24420478 // addiu v0, v0, 0x0478
-patch=1,EE,2076D538,extended,C4400000 // lwc1 f0, 0(v0)
-patch=1,EE,2076D53C,extended,46000802 // mul.s f0, f1, f0
-patch=1,EE,2076D540,extended,080D1090 // j 0x344240
-patch=1,EE,2076D544,extended,00000000 // nop
+patch=1,EE,2076D534,extended,C4400478 // lwc1 f0, 0x478(v0)
+patch=1,EE,2076D538,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,2076D53C,extended,080D1090 // j 0x344240
+patch=1,EE,2076D540,extended,00000000 // nop
 // entrypoint
 patch=1,EE,20344238,extended,081DB54C // j 0x76D530
 patch=1,EE,2034423C,extended,00000000 // nop
