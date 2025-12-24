@@ -157,7 +157,7 @@ patch=1,EE,2076D520,extended,00000000      // nop
 patch=1,EE,2076D524,extended,03E00008      // jr ra
 patch=1,EE,2076D528,extended,00000000      // nop
 // entrypoint
-patch=1,EE,20403C74,extended,0C1DB545      // jal 0x76D514
+patch=1,EE,20403C74,extended,0C1DB544      // jal 0x76D510
 
 [Set Werehog Levels]
 author=xan1242
