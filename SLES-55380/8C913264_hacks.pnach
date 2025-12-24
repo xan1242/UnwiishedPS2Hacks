@@ -58,9 +58,8 @@ patch=1,EE,2023C484,extended,24020001
 // fix NPCTalk rendering
 patch=1,EE,20820520,extended,3C020082 // lui v0, 0x82
 patch=1,EE,20820524,extended,C4400484 // lwc1 f0, 0x484(v0)
-patch=1,EE,20820528,extended,46000802 // mul.s f0, f1, f0
-patch=1,EE,2082052C,extended,0810EBE1 // j 0x43AF84
-patch=1,EE,20820530,extended,00000000 // nop
+patch=1,EE,20820528,extended,0810EBE1 // j 0x43AF84
+patch=1,EE,2082052C,extended,46000802 // mul.s f0, f1, f0
 // entrypoint
 patch=1,EE,2043AF7C,extended,08208148 // j 0x820520
 patch=1,EE,2043AF80,extended,00000000 // nop
