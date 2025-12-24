@@ -231,6 +231,12 @@ author=xan1242
 comment=Forces std.IsDebug() to return true
 patch=1,EE,20308CA4,extended,24020001
 
+[Silence "File cache was not hit"]
+author=xan1242
+comment=Silences the "File cache was not hit." messages
+patch=1,EE,206BB5B8,extended,00000000
+patch=1,EE,206B997C,extended,00000000
+
 [Use Host Interface (HTCI)]
 author=xan1242
 comment=Replaces the DVCI (DVD/cdrom0:) interface with HTCI (host:) to allow for loading from a HDD. NOTE: DO NOT ENABLE IF YOU'RE USING AN ISO!
