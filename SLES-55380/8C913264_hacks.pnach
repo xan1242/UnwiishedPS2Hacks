@@ -15,7 +15,6 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 [Enable Widescreen Mode]
 author=xan1242
 comment=Do NOT enable with "Ultrawide Aspect Ratio". Enables the widescreen mode flag in the default system configuration and patches the UI values.
-// #TODO: Movies
 patch=1,EE,20753F08,byte,01
 patch=1,EE,20218470,extended,00000000
 // set CSD res to 854x480
@@ -55,6 +54,8 @@ patch=1,EE,20872358,extended,3F19999A
 patch=1,EE,20872364,extended,3E0ED917
 patch=1,EE,20872368,extended,3DC9374C
 patch=1,EE,20872378,extended,3DC9374C
+// Squirrel Movie IsWide function force return true
+patch=1,EE,2023C484,extended,24020001
 
 [Ultrawide Aspect Ratio]
 author=xan1242
