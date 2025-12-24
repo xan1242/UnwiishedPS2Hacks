@@ -113,12 +113,10 @@ patch=1,EE,204E4E74,extended,3C0242D7
 patch=1,EE,2023C484,extended,24020001
 // DrawMovieWithPos hook -- adjust mov_l and mov_r values...
 patch=1,EE,20820504,extended,3C020082 // lui v0, 0x82
-patch=1,EE,20820508,extended,2442047C // addiu v0, v0, 0x047C
-patch=1,EE,2082050C,extended,C44E0000 // lwc1 f14, 0(v0)
-patch=1,EE,20820510,extended,24420004 // addiu v0, v0, 4
-patch=1,EE,20820514,extended,C44C0000 // lwc1 f12, 0(v0)
-patch=1,EE,20820518,extended,0808F0C0 // j 0x23C300
-patch=1,EE,2082051C,extended,00000000 // nop
+patch=1,EE,20820508,extended,C44E047C // lwc1 f14, 0x47C(v0)
+patch=1,EE,2082050C,extended,C44C0480 // lwc1 f12, 0x480(v0)
+patch=1,EE,20820510,extended,0808F0C0 // j 0x23C300
+patch=1,EE,20820514,extended,00000000 // nop
 // entrypoint
 patch=1,EE,2023F96C,extended,0C208141 // jal 0x820504
 // values -- the movie window is 512x448, this sets absolute values of the rectangle within that window
