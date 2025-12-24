@@ -205,6 +205,17 @@ patch=1,EE,20796F14,extended,0065AFC8
 patch=1,EE,20792180,extended,00820500
 patch=1,EE,2079217C,extended,0065AFC8
 
+[Redirect Squirrel Prints to stdout]
+author=xan1242
+comment=Redirects Squirrel's print function into the TTY. Useful for debugging/development.
+patch=1,EE,203085F4,extended,00000000 // nop
+patch=1,EE,203085FC,extended,3C04007B // lui a0, 0x7B
+patch=1,EE,20308600,extended,0C196BF2 // jal printf (0x65AFC8)
+patch=1,EE,20308604,extended,2484AEB8 // addiu a0, a0, 0xAEB8
+patch=1,EE,20308608,extended,DFBF0000 // ld ra, 0(sp)
+patch=1,EE,2030860C,extended,03E00008 // jr ra
+patch=1,EE,20308610,extended,27BD0080 // addiu sp 0x80
+
 [Use Host Interface (HTCI)]
 author=xan1242
 comment=Replaces the DVCI (DVD/cdrom0:) interface with HTCI (host:) to allow for loading from a HDD. NOTE: DO NOT ENABLE IF YOU'RE USING AN ISO!
