@@ -60,7 +60,6 @@ patch=1,EE,2023C484,extended,24020001
 [Ultrawide Aspect Ratio]
 author=xan1242
 comment=Do NOT enable with "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
-// #TODO: Movies
 patch=1,EE,208700CC,extended,400D2BF2
 patch=1,EE,20753F08,byte,01
 // set CSD res to 1147x480
@@ -112,6 +111,23 @@ patch=1,EE,20870470,extended,4184399A
 patch=1,EE,204E4A78,extended,3C02430A
 patch=1,EE,204E5B5C,extended,3C02430A
 patch=1,EE,204E4E74,extended,3C0242D7
+// Squirrel Movie IsWide function force return true
+patch=1,EE,2023C484,extended,24020001
+// DrawMovieWithPos hook -- adjust mov_l and mov_r values...
+patch=1,EE,20820504,extended,3C020082 // lui v0, 0x82
+patch=1,EE,20820508,extended,2442047C // addiu v0, v0, 0x047C
+patch=1,EE,2082050C,extended,C44E0000 // lwc1 f14, 0(v0)
+patch=1,EE,20820510,extended,24420004 // addiu v0, v0, 4
+patch=1,EE,20820514,extended,C44C0000 // lwc1 f12, 0(v0)
+patch=1,EE,20820518,extended,0808F0C0 // j 0x23C300
+patch=1,EE,2082051C,extended,00000000 // nop
+// entrypoint
+patch=1,EE,2023F96C,extended,0C208141 // jal 0x820504
+// values -- the movie window is 512x448, this sets absolute values of the rectangle within that window
+// mov_r value (right side of the rectangle)
+patch=1,EE,2082047C,extended,43D41595
+// mov_l value (left side of the rectangle)
+patch=1,EE,20820480,extended,42AFA9AB
 
 [Allow movie skipping everywhere]
 author=xan1242
