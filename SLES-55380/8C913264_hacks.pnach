@@ -15,7 +15,6 @@ patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 [Enable Widescreen Mode]
 author=xan1242
 comment=Do NOT enable with "Ultrawide Aspect Ratio". Enables the widescreen mode flag in the default system configuration and patches the UI values.
-// #TODO: adjust boss health bars
 // #TODO: Movies
 patch=1,EE,20753F08,byte,01
 patch=1,EE,20218470,extended,00000000
@@ -47,6 +46,8 @@ patch=1,EE,20871DE4,extended,3F19A8F7
 patch=1,EE,20871E44,extended,41340000
 // fix Werehog unleash bar fill X position
 patch=1,EE,20871E50,extended,40F00000
+// fix Boss HP bar poly right edge pos
+patch=1,EE,203C9DBC,extended,3C023F00
 // fix Werehog results screen upgrade gauges
 // main position 
 patch=1,EE,20872358,extended,3F19999A
@@ -58,7 +59,6 @@ patch=1,EE,20872378,extended,3DC9374C
 [Ultrawide Aspect Ratio]
 author=xan1242
 comment=Do NOT enable with "Enable Widescreen Mode". Sets the 3D projection scaling for ultrawide aspect ratio (2.3888). Applied only at game bootup.
-// #TODO: adjust boss health bars
 // #TODO: Movies
 patch=1,EE,208700CC,extended,400D2BF2
 patch=1,EE,20753F08,byte,01
@@ -91,6 +91,10 @@ patch=1,EE,20871DE4,extended,3EE4B40B
 patch=1,EE,20871E44,extended,4105F418
 // fix Werehog unleash bar fill X position
 patch=1,EE,20871E50,extended,40B29ACA
+// fix Boss HP bar poly size
+patch=1,EE,20871DEC,extended,400EE23C
+// fix Boss HP bar poly right edge pos
+patch=1,EE,203C9DBC,extended,3C023F00
 // fix Werehog results screen upgrade gauges
 // main position 
 patch=1,EE,20872358,extended,3EE49D2C
