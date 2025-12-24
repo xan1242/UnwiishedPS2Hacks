@@ -23,16 +23,8 @@ patch=1,EE,20218470,extended,00000000
 // set CSD res to 854x480
 patch=1,EE,20871490,extended,44554000
 patch=1,EE,20871494,extended,43F00000
-// redirect font X size to a different address (0x815120)
-// shuffle instructions around to preserve v0...
-patch=1,EE,20345460,extended,C4405120
-patch=1,EE,20345464,extended,8FA20080
-patch=1,EE,20345468,extended,AC430064
-patch=1,EE,203458B4,extended,C4405120
-patch=1,EE,203458B8,extended,8FA200B0
-patch=1,EE,203458BC,extended,AC430064
 // set font draw size / aspect ratio (CConverse)
-patch=1,EE,20815120,extended,3F400000
+patch=1,EE,20870100,extended,3F400000
 patch=1,EE,20870104,extended,3F800000
 // fix font kerning
 // world map mission list
@@ -76,16 +68,8 @@ patch=1,EE,20753F08,byte,01
 patch=1,EE,20218470,extended,00000000
 patch=1,EE,20871490,extended,448F6000
 patch=1,EE,20871494,extended,43F00000
-// redirect font X size to a different address (0x815120)
-// shuffle instructions around to preserve v0...
-patch=1,EE,20345460,extended,C4405120
-patch=1,EE,20345464,extended,8FA20080
-patch=1,EE,20345468,extended,AC430064
-patch=1,EE,203458B4,extended,C4405120
-patch=1,EE,203458B8,extended,8FA200B0
-patch=1,EE,203458BC,extended,AC430064
 // set font draw size / aspect ratio (CConverse)
-patch=1,EE,20815120,extended,3F0EE23C
+patch=1,EE,20870100,extended,3F0EE23C
 patch=1,EE,20870104,extended,3F800000
 // fix font kerning
 // world map mission list
