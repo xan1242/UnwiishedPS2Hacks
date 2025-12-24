@@ -135,6 +135,13 @@ patch=1,EE,20820508,extended,C44E047C // lwc1 f14, 0x47C(v0)
 patch=1,EE,2082050C,extended,C44C0480 // lwc1 f12, 0x480(v0)
 patch=1,EE,20820510,extended,0808F0C0 // j 0x23C300
 patch=1,EE,20820514,extended,00000000 // nop
+// entrypoint
+patch=1,EE,2023F96C,extended,0C208141 // jal 0x820504
+// values -- the movie window is 512x448, this sets absolute values of the rectangle within that window
+// mov_r value (right side of the rectangle)
+patch=1,EE,2082047C,extended,43D41595
+// mov_l value (left side of the rectangle)
+patch=1,EE,20820480,extended,42AFA9AB
 // fix NPCTalk rendering
 patch=1,EE,20820520,extended,3C020082 // lui v0, 0x82
 patch=1,EE,20820524,extended,C4400484 // lwc1 f0, 0x484(v0)
@@ -156,13 +163,6 @@ patch=1,EE,20407A00,extended,3C024305
 patch=1,EE,20820484,extended,3EE49D2C
 // X pos translation of NPCTalk background
 patch=1,EE,20820488,extended,42393333
-// entrypoint
-patch=1,EE,2023F96C,extended,0C208141 // jal 0x820504
-// values -- the movie window is 512x448, this sets absolute values of the rectangle within that window
-// mov_r value (right side of the rectangle)
-patch=1,EE,2082047C,extended,43D41595
-// mov_l value (left side of the rectangle)
-patch=1,EE,20820480,extended,42AFA9AB
 
 [Allow movie skipping everywhere]
 author=xan1242
