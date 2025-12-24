@@ -216,6 +216,21 @@ patch=1,EE,20308608,extended,DFBF0000 // ld ra, 0(sp)
 patch=1,EE,2030860C,extended,03E00008 // jr ra
 patch=1,EE,20308610,extended,27BD0080 // addiu sp 0x80
 
+[Force g_CScenarioManager.IsDebugRom]
+author=xan1242
+comment=Forces g_CScenarioManager.IsDebugRom() to return true
+patch=1,EE,20371E44,extended,24020001
+
+[Force g_CScenarioManager.IsDebug]
+author=xan1242
+comment=Forces g_CScenarioManager.IsDebug() to return true
+patch=1,EE,20371E34,extended,24020001
+
+[Force std.IsDebug]
+author=xan1242
+comment=Forces std.IsDebug() to return true
+patch=1,EE,20308CA4,extended,24020001
+
 [Use Host Interface (HTCI)]
 author=xan1242
 comment=Replaces the DVCI (DVD/cdrom0:) interface with HTCI (host:) to allow for loading from a HDD. NOTE: DO NOT ENABLE IF YOU'RE USING AN ISO!
