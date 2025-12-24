@@ -164,6 +164,19 @@ patch=1,EE,2076D52C,extended,00000000      // nop
 // entrypoint
 patch=1,EE,20403C74,extended,0C1DB545      // jal 0x76D514
 
+[Set Werehog Levels]
+author=xan1242
+comment=Manually set each level of Werehog skills (edit the cheat with your own values)
+// Edit the last byte with your own desired level
+// Attack (max 5)
+patch=1,EE,202496B0,extended,24020005 
+// Damage (max 4)
+patch=1,EE,202496BC,extended,24020004
+// Life (max 4)
+patch=1,EE,202496C8,extended,24020004
+// Unleash (max 4)
+patch=1,EE,202496D4,extended,24030004
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
