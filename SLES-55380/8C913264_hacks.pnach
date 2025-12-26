@@ -234,7 +234,7 @@ patch=1,EE,201B6370,extended,10000038
 [Remap Sonic's Actions]
 author=xan1242
 comment=Remaps Sonic's actions to different buttons. Edit this cheat to reconfigure bindings. Default configuration follows HD Unleashed.
-// ACTIONS -- edit the last 4 bytes of the value with your desired button. If there are multiple entries in an action, change all of them to be the same!
+// ACTIONS -- edit the last 2 bytes (4 digits) of the value with your desired button. If there are multiple entries in an action, change all of them to be the same!
 // HINT: if you want to assign multiple buttons, OR the values together in a hex calculator!
 // Button mask table:
 // | Button                 | Value |
