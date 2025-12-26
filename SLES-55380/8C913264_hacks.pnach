@@ -225,6 +225,11 @@ author=xan1242
 comment=Disables the wall crash state from ever being activated.
 patch=1,EE,201C5080,extended,00000000
 
+[Disable auto-sliding on slopes]
+author=xan1242
+comment=Disables automatic sliding on slopes/walls.
+patch=1,EE,201B6370,extended,10000038
+
 // #TODO: Werehog and Light Gaia remaps
 [Remap Sonic's Actions]
 author=xan1242
