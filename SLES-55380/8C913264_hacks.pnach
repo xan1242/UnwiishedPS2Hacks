@@ -321,76 +321,96 @@ patch=1,EE,201DD794,extended,24050004
 
 // HOOK CODE -- DO NOT TOUCH THIS
 // read the pad address directly... (874CCC)
+// enablement checker "function" -- we back up the return address in the v1 register...
+patch=1,EE,2082052C,extended,908200D4 // lbu v0, 0xD4(a0)
+patch=1,EE,20820530,extended,10400003 // beqz v0, exitpoint_dcheck
+patch=1,EE,20820534,extended,00000000 // nop
+patch=1,EE,20820538,extended,908200D5 // lbu v0, 0xD5(a0)
+patch=1,EE,2082053C,extended,0002102B // sltu v0, zero, v0
+                                      // exitpoint_dcheck:
+patch=1,EE,20820540,extended,03E00008 // jr ra
+patch=1,EE,20820544,extended,0060F821 // move ra, v1
 // checks if button has been pressed this frame only...
-patch=1,EE,2076D53C,extended,8F82CCE4 // lw v0, -0x331C(gp) 
-patch=1,EE,2076D540,extended,00A21024 // and v0, a1, v0
-patch=1,EE,2076D544,extended,03E00008 // jr ra
-patch=1,EE,2076D548,extended,0002102B // sltu v0, zero, v0
+patch=1,EE,20820548,extended,03E01821 // move v1, ra
+patch=1,EE,2082054C,extended,0C20814B // jal 0x82052C
+patch=1,EE,20820550,extended,00000000 // nop
+patch=1,EE,20820554,extended,10400003 // beqz v0, exitpoint
+patch=1,EE,20820558,extended,00000000 // nop
+patch=1,EE,2082055C,extended,8F82CCE4 // lw v0, -0x331C(gp)
+                                      // exitpoint_hcheck:
+patch=1,EE,20820560,extended,00A21024 // and v0, a1, v0
+                                      // exitpoint:
+patch=1,EE,20820564,extended,03E00008 // jr ra
+patch=1,EE,20820568,extended,0002102B // sltu v0, zero, v0
 // checks current button state (held down)
-patch=1,EE,2076D54C,extended,8F82CCDC // lw v0, -0x3324(gp)
-patch=1,EE,2076D550,extended,00A21024 // and v0, a1, v0
-patch=1,EE,2076D554,extended,03E00008 // jr ra
-patch=1,EE,2076D558,extended,0002102B // sltu v0, zero, v0
+patch=1,EE,2082056C,extended,03E01821 // move v1, ra
+patch=1,EE,20820570,extended,0C20814B // jal 0x82052C
+patch=1,EE,20820574,extended,00000000 // nop
+patch=1,EE,20820578,extended,1040FFFA // beqz v0, exitpoint // using code from above to save space...
+patch=1,EE,2082057C,extended,00000000 // nop
+patch=1,EE,20820580,extended,1000FFF7 // b exitpoint_hcheck // using code from above to save space...
+patch=1,EE,20820584,extended,8F82CCDC // lw v0, -0x3324(gp)
+
 // SONIC ACTIONS
 // Jump
-patch=1,EE,201858B0,extended,0C1DB54F
-patch=1,EE,201DD5E0,extended,0C1DB54F
-patch=1,EE,20188C10,extended,0C1DB54F
-patch=1,EE,201DBFB0,extended,0C1DB54F
-patch=1,EE,2018A7A0,extended,0C1DB54F
-patch=1,EE,201E07C4,extended,0C1DB54F
-patch=1,EE,201E0814,extended,0C1DB54F
+patch=1,EE,201858B0,extended,0C208152
+patch=1,EE,201DD5E0,extended,0C208152
+patch=1,EE,20188C10,extended,0C208152
+patch=1,EE,201DBFB0,extended,0C208152
+patch=1,EE,2018A7A0,extended,0C208152
+patch=1,EE,201E07C4,extended,0C208152
+patch=1,EE,201E0814,extended,0C208152
 // Boost
-patch=1,EE,201DB7C4,extended,0C1DB54F
-patch=1,EE,201DC308,extended,0C1DB54F
-patch=1,EE,201DBB70,extended,0C1DB54F
-patch=1,EE,201DD398,extended,0C1DB54F
-patch=1,EE,201DD1D0,extended,0C1DB54F
-patch=1,EE,201DBD20,extended,0C1DB54F
-patch=1,EE,201DB9B4,extended,0C1DB54F
-patch=1,EE,201DBEF8,extended,0C1DB54F
-patch=1,EE,201DC134,extended,0C1DB54F
+patch=1,EE,201DB7C4,extended,0C208152
+patch=1,EE,201DC308,extended,0C208152
+patch=1,EE,201DBB70,extended,0C208152
+patch=1,EE,201DD398,extended,0C208152
+patch=1,EE,201DD1D0,extended,0C208152
+patch=1,EE,201DBD20,extended,0C208152
+patch=1,EE,201DB9B4,extended,0C208152
+patch=1,EE,201DBEF8,extended,0C208152
+patch=1,EE,201DC134,extended,0C208152
 // Squat / Slide
-patch=1,EE,201D8EEC,extended,0C1DB54F // jal 0x76D53C -- button pressed hook
-patch=1,EE,201D8ED0,extended,0C1DB553 // jal 0x76D54C -- button held hook
-patch=1,EE,201B422C,extended,0C1DB553 // jal 0x76D54C
-patch=1,EE,201B3C74,extended,0C1DB553 // jal 0x76D54C
-patch=1,EE,2029C76C,extended,0C1DB553 // jal 0x76D54C
+patch=1,EE,201D8EEC,extended,0C208152 // jal 0x76D53C -- button pressed hook
+patch=1,EE,201D8ED0,extended,0C20815B // jal 0x76D54C -- button held hook
+patch=1,EE,201B422C,extended,0C20815B // jal 0x76D54C
+patch=1,EE,201B3C74,extended,0C20815B // jal 0x76D54C
+patch=1,EE,2029C76C,extended,0C20815B // jal 0x76D54C
 // Drift
-patch=1,EE,201D8CDC,extended,0C1DB54F
-patch=1,EE,201BACC4,extended,0C1DB553
+patch=1,EE,201D8CDC,extended,0C208152
+patch=1,EE,201BACC4,extended,0C20815B
 // Lightspeed Dash
-patch=1,EE,201E23A4,extended,0C1DB553
+patch=1,EE,201E23A4,extended,0C20815B
 // Sidestep
-patch=1,EE,201D8AA8,extended,0C1DB54F
-patch=1,EE,201D8ABC,extended,0C1DB54F
-patch=1,EE,201D8AD4,extended,0C1DB54F
-patch=1,EE,201DBFD0,extended,0C1DB54F
-patch=1,EE,201DBFE4,extended,0C1DB54F
-patch=1,EE,201DBFFC,extended,0C1DB54F
+patch=1,EE,201D8AA8,extended,0C208152
+patch=1,EE,201D8ABC,extended,0C208152
+patch=1,EE,201D8AD4,extended,0C208152
+patch=1,EE,201DBFD0,extended,0C208152
+patch=1,EE,201DBFE4,extended,0C208152
+patch=1,EE,201DBFFC,extended,0C208152
 // Homing Attack
-patch=1,EE,201DB400,extended,0C1DB54F
+patch=1,EE,201DB400,extended,0C208152
 // Air Boost
-patch=1,EE,201DB3F0,extended,0C1DB54F
+patch=1,EE,201DB3F0,extended,0C208152
 // Stomp
-patch=1,EE,201E0664,extended,0C1DB54F
+patch=1,EE,201E0664,extended,0C208152
 // Countdown Spindash (aka SpinStartingDemo)
-patch=1,EE,203936C4,extended,0C1DB54F
+patch=1,EE,203936C4,extended,0C208152
 // Grind Squat
-patch=1,EE,201DD510,extended,0C1DB54F
-patch=1,EE,201DD4CC,extended,0C1DB553
-patch=1,EE,2020E488,extended,0C1DB553
+patch=1,EE,201DD510,extended,0C208152
+patch=1,EE,201DD4CC,extended,0C20815B
+patch=1,EE,2020E488,extended,0C20815B
 // Unknown (grind squat again?)
-patch=1,EE,201DD4F8,extended,0C1DB54F
-patch=1,EE,201DD53C,extended,0C1DB553
+patch=1,EE,201DD4F8,extended,0C208152
+patch=1,EE,201DD53C,extended,0C20815B
 // Bobsled Drift
-patch=1,EE,203BD0AC,extended,0C1DB553
+patch=1,EE,203BD0AC,extended,0C20815B
 // Bobsled Jump
-patch=1,EE,201DB93C,extended,0C1DB54F
+patch=1,EE,201DB93C,extended,0C208152
 // Switch Rail
-patch=1,EE,201DD768,extended,0C1DB54F
-patch=1,EE,201DD77C,extended,0C1DB54F
-patch=1,EE,201DD794,extended,0C1DB54F
+patch=1,EE,201DD768,extended,0C208152
+patch=1,EE,201DD77C,extended,0C208152
+patch=1,EE,201DD794,extended,0C208152
 
 [60FPS Mode (BUGGY)]
 author=xan1242
