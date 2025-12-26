@@ -301,7 +301,7 @@ patch=1,EE,201DB3D4,extended,24050080
 // Stomp
 patch=1,EE,201E0668,extended,24050020
 // Countdown Spindash (aka SpinStartingDemo)
-patch=1,EE,203936C0,extended,24050020
+patch=1,EE,203936C0,extended,24050080
 // Grind Squat
 patch=1,EE,201DD4D0,extended,24050020
 patch=1,EE,201DD514,extended,24050020
