@@ -55,12 +55,12 @@ patch=1,EE,20872378,extended,3DC9374C
 // Squirrel Movie IsWide function force return true
 patch=1,EE,2023C484,extended,24020001
 // fix NPCTalk rendering
-patch=1,EE,20820520,extended,3C020082 // lui v0, 0x82
-patch=1,EE,20820524,extended,C4400484 // lwc1 f0, 0x484(v0)
-patch=1,EE,20820528,extended,0810EBE1 // j 0x43AF84
-patch=1,EE,2082052C,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,20820504,extended,3C020082 // lui v0, 0x82
+patch=1,EE,20820508,extended,C4400484 // lwc1 f0, 0x484(v0)
+patch=1,EE,2082050C,extended,0810EBE1 // j 0x43AF84
+patch=1,EE,20820510,extended,46000802 // mul.s f0, f1, f0
 // entrypoint
-patch=1,EE,2043AF7C,extended,08208148 // j 0x820520
+patch=1,EE,2043AF7C,extended,08208141 // j 0x820504
 patch=1,EE,2043AF80,extended,00000000 // nop
 // patch NPC texture scaling value
 patch=1,EE,20436420,extended,3C020082 // lui v0, 0x82
@@ -127,26 +127,26 @@ patch=1,EE,204E4E74,extended,3C0242D7
 // Squirrel Movie IsWide function force return true
 patch=1,EE,2023C484,extended,24020001
 // DrawMovieWithPos hook -- adjust mov_l and mov_r values...
-patch=1,EE,20820504,extended,3C020082 // lui v0, 0x82
-patch=1,EE,20820508,extended,C44E047C // lwc1 f14, 0x47C(v0)
-patch=1,EE,2082050C,extended,0808F0C0 // j 0x23C300
-patch=1,EE,20820510,extended,C44C0480 // lwc1 f12, 0x480(v0)
+patch=1,EE,2082051C,extended,3C020082 // lui v0, 0x82
+patch=1,EE,20820520,extended,C44E047C // lwc1 f14, 0x47C(v0)
+patch=1,EE,20820524,extended,0808F0C0 // j 0x23C300
+patch=1,EE,20820528,extended,C44C0480 // lwc1 f12, 0x480(v0)
 // entrypoint
-patch=1,EE,2023F96C,extended,0C208141 // jal 0x820504
+patch=1,EE,2023F96C,extended,0C208147 // jal 0x82051C
 // values -- the movie window is 512x448, this sets absolute values of the rectangle within that window
 // mov_r value (right side of the rectangle)
 patch=1,EE,2082047C,extended,43D41595
 // mov_l value (left side of the rectangle)
 patch=1,EE,20820480,extended,42AFA9AB
 // fix NPCTalk rendering
-patch=1,EE,20820520,extended,3C020082 // lui v0, 0x82
-patch=1,EE,20820524,extended,C4400484 // lwc1 f0, 0x484(v0)
-patch=1,EE,20820528,extended,46000802 // mul.s f0, f1, f0
-patch=1,EE,2082052C,extended,C4410488 // lwc1 f1, 0x488(v0)
-patch=1,EE,20820530,extended,0810EBE1 // j 0x43AF84
-patch=1,EE,20820534,extended,46010000 // add.s f0, f0, f1
+patch=1,EE,20820504,extended,3C020082 // lui v0, 0x82
+patch=1,EE,20820508,extended,C4400484 // lwc1 f0, 0x484(v0)
+patch=1,EE,2082050C,extended,46000802 // mul.s f0, f1, f0
+patch=1,EE,20820510,extended,C4410488 // lwc1 f1, 0x488(v0)
+patch=1,EE,20820514,extended,0810EBE1 // j 0x43AF84
+patch=1,EE,20820518,extended,46010000 // add.s f0, f0, f1
 // entrypoint
-patch=1,EE,2043AF7C,extended,08208148 // j 0x820520
+patch=1,EE,2043AF7C,extended,08208141 // j 0x820504
 patch=1,EE,2043AF80,extended,00000000 // nop
 // patch NPC texture scaling value
 patch=1,EE,20436420,extended,3C020082 // lui v0, 0x82
