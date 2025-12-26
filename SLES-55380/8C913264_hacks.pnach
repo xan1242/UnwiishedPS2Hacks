@@ -308,6 +308,11 @@ patch=1,EE,201DD540,extended,24050020
 patch=1,EE,203BD0A4,extended,24050003
 // Bobsled Jump
 patch=1,EE,201DB940,extended,24050040
+// Switch Rail Right
+patch=1,EE,201DD76C,extended,24050008
+// Switch Rail Left
+patch=1,EE,201DD780,extended,24050004
+patch=1,EE,201DD794,extended,24050004
 
 // HOOK CODE -- DO NOT TOUCH THIS
 // read the pad address directly... (874CCC)
@@ -377,6 +382,10 @@ patch=1,EE,201DD53C,extended,0C1DB553
 patch=1,EE,203BD0AC,extended,0C1DB553
 // Bobsled Jump
 patch=1,EE,201DB93C,extended,0C1DB54F
+// Switch Rail
+patch=1,EE,201DD768,extended,0C1DB54F
+patch=1,EE,201DD77C,extended,0C1DB54F
+patch=1,EE,201DD794,extended,0C1DB54F
 
 [60FPS Mode (BUGGY)]
 author=xan1242
