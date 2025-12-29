@@ -1,4 +1,5 @@
 // #TODO: Bind the Unleash trigger to a separate button!
+// #TODO: prompt icons...
 [Remap Werehog Actions]
 author=xan1242
 comment=Remaps Werehog's actions to different buttons. Edit this cheat to reconfigure bindings.
