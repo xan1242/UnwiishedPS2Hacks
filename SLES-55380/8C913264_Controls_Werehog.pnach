@@ -38,7 +38,7 @@ patch=1,EE,203C1884,extended,30420008
 patch=1,EE,203DAFD4,extended,30420008
 patch=1,EE,204125C4,extended,30420008
 // Unknown (Unleash?)
-patch=1,EE,20249074,extended,30880001
+patch=1,EE,20249074,extended,30880400
 // Defend
 patch=1,EE,20249078,extended,30890004
 patch=1,EE,20247258,extended,24050004
@@ -97,10 +97,10 @@ patch=1,EE,204125D8,extended,00000000 // nop
 
 [Bind Werehog Dash to a button]
 author=xan1242
-comment=Binds Werehog dash to a button instead of stick double-tap. Refer to the cheat above for the button table. Default is R2.
-// Set the value here for binding (default: R2)
-patch=1,EE,20267474,extended,30420002
-patch=1,EE,20268994,extended,30420002
+comment=Binds Werehog dash to a button instead of stick double-tap. Refer to the cheat above for the button table. Default is L2 or R2.
+// Set the value here for binding (default: L2 or R2)
+patch=1,EE,20267474,extended,30420003
+patch=1,EE,20268994,extended,30420003
 
 
 // HOOK CODE -- DO NOT TOUCH THIS
