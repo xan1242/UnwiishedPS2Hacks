@@ -52,7 +52,7 @@ patch=1,EE,20249080,extended,308B0020
 // Both Arms
 patch=1,EE,20249000,extended,30830010
 // Attack (During Grab)
-patch=1,EE,2026FD6C,extended,30620090
+patch=1,EE,2026FD6C,extended,306200B0
 // Throw (During Grab)
 patch=1,EE,2026FDC0,extended,30620040
 
