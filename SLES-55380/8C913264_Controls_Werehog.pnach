@@ -64,7 +64,7 @@ patch=1,EE,203ECE5C,extended,8F85CCE4 // lw a1, -0x331C(gp)
 patch=1,EE,2026FD5C,extended,8F83CCDC // lw v1, -0x3324(gp)
 patch=1,EE,2026FDB0,extended,8F83CCDC // lw v1, -0x3324(gp)
 patch=1,EE,202703F8,extended,8F83CCDC // lw v1, -0x3324(gp)
-patch=1,EE,202705AC,extended,8F83CCDC // lw v1, -0x3324(gp)
+patch=1,EE,202705AC,extended,8F82CCDC // lw v0, -0x3324(gp)
 // nuke reads
 patch=1,EE,2026FBBC,extended,00000000
 patch=1,EE,20247528,extended,00000000
