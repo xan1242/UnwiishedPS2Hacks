@@ -230,6 +230,12 @@ author=xan1242
 comment=Disables automatic sliding on slopes/walls.
 patch=1,EE,201B6370,extended,10000038
 
+[Speed up Werehog Ledge Climb]
+author=xan1242
+comment=Speeds up the werehog's ledge climbing by skipping animation finish checks.
+patch=1,EE,2026983C,extended,00000000
+patch=1,EE,20269844,extended,00000000
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
