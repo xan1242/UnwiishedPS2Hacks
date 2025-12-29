@@ -234,6 +234,8 @@ patch=1,EE,201B6370,extended,10000038
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
 patch=1,EE,200D91A4,extended,08036476
+// fix werehog dash jitter
+patch=1,EE,20268A20,extended,24020000
 
 [640x448]
 author=xan1242
