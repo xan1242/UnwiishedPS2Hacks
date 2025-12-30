@@ -121,3 +121,18 @@ patch=1,EE,2026899C,extended,10400025 // beqz v0, 0x268A34
 patch=1,EE,202689A0,extended,24080001 // li a4, 1
 patch=1,EE,202689A4,extended,10000023 // b 0x268A34
 patch=1,EE,202689A8,extended,0000402D // move a4, zero
+
+[Bind Werehog Unleash to a button]
+author=xan1242
+comment=Binds Werehog Unleash to a button. Refer to the cheat "Remap Werehog Actions" for the button table. Default is R3.
+// Set the value here for binding (default: R3)
+patch=1,EE,202733FC,extended,30420400
+
+// HOOK CODE -- DO NOT TOUCH THIS
+patch=1,EE,202733F8,extended,8F82CCE4 // lw v0, -0x331C(gp)
+//patch=1,EE,202733FC,extended,30420400 // andi v0, v0, 0x400  <-- this is the binding, so it's up above...
+                                      // beqzl v0, 0x273454 <-- these instructions should already be in the executable...
+                                      // move v0, zero
+patch=1,EE,20273408,extended,00000000 // nop
+patch=1,EE,2027340C,extended,00000000 // nop
+patch=1,EE,20273410,extended,00000000 // nop
