@@ -270,14 +270,11 @@ patch=1,EE,200D91A4,extended,08036476
 // fix werehog dash jitter
 patch=1,EE,20268A20,extended,24020000
 // Fix CCameraChanger updater/ticker task timescale hook
-patch=1,EE,208205A8,extended,3C020082 // lui v0, 0x82
-patch=1,EE,208205AC,extended,C4400490 // lwc1 f0, 0x490(v0)
-patch=1,EE,208205B0,extended,080A59AC // j 0x2966B0
-patch=1,EE,208205B4,extended,460C0302 // mul.s f12, f0, f12
+patch=1,EE,208205A8,extended,C7809E90 // lwc1 f0, -0x6170(gp) // use a static 2.0 value found at 0x871E80
+patch=1,EE,208205AC,extended,080A59AC // j 0x2966B0
+patch=1,EE,208205B0,extended,460C0302 // mul.s f12, f0, f12
 // entrypoint -- at vtable Update() method...
 patch=1,EE,208520F4,extended,008205A8
-// scalar value
-patch=1,EE,20820490,extended,40000000
 
 [640x448]
 author=xan1242
