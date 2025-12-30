@@ -275,6 +275,22 @@ patch=1,EE,208205AC,extended,080A59AC // j 0x2966B0
 patch=1,EE,208205B0,extended,460C0302 // mul.s f12, f0, f12
 // entrypoint -- at vtable Update() method...
 patch=1,EE,208520F4,extended,008205A8
+// GimSonicSpring -- half rate hack (needed for some springs, e.g. Eggmanland)
+// #TODO - this needs to be rewritten with hardware timers in mind! Need to measure delta time and limit it to 1/30s somehow.
+// Until then -- overclock the EE rate to ensure that the game runs at 60FPS consistently!
+patch=1,EE,208205B4,extended,3C030082 // lui v1, 0x82
+patch=1,EE,208205B8,extended,8C6204A4 // lw v0, 0x4A4(v1) // value at 8204A4 (needs to be any memory area that is 4 byte zero)
+patch=1,EE,208205BC,extended,00401027 // nor v0, v0, zero
+patch=1,EE,208205C0,extended,14400003 // bnez v0, halfrateexit (0x8205D0)
+patch=1,EE,208205C4,extended,AC6204A4 // sw v0, 0x4A4(v1)
+patch=1,EE,208205C8,extended,080FF6C4 // j 0x3FDB10
+patch=1,EE,208205CC,extended,00000000 // nop
+                                      // halfrateexit:
+patch=1,EE,208205D0,extended,03E00008 // jr ra
+patch=1,EE,208205D4,extended,00000000 // nop
+// entrypoint -- at vtable Update() method...
+patch=1,EE,20857A14,extended,8205B4
+patch=1,EE,20859124,extended,8205B4
 
 [640x448]
 author=xan1242
