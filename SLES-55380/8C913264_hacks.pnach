@@ -248,6 +248,21 @@ comment=Speeds up the werehog's dash stop animations by skipping animation finis
 patch=1,EE,202687AC,extended,00000000
 patch=1,EE,202687B4,extended,10000007
 
+[Disable Werehog Unleash bar from draining during cutscenes]
+author=xan1242
+comment=Stops the Unleash bar from during in-game cutscenes.
+patch=1,EE,20820588,extended,0C0E2A04 // jal 0x38A810 // (function that checks if there's NOT an active cutscene)
+patch=1,EE,2082058C,extended,00000000 // nop
+patch=1,EE,20820590,extended,54400003 // bnezl v0, no_cutscene (0x8205A0)
+patch=1,EE,20820594,extended,C483000C // lwc f3, 0xC(a0)
+patch=1,EE,20820598,extended,080F6701 // j 0x3D9C04 // exit early
+patch=1,EE,2082059C,extended,00000000 // nop
+                                      // no_cutscene:
+patch=1,EE,208205A0,extended,080F66D8 // j 0x3D9B60 // continue as normal
+patch=1,EE,208205A4,extended,00000000 // nop
+// entrypoint
+patch=1,EE,203D9B58,extended,08208162 // j 0x820588
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
