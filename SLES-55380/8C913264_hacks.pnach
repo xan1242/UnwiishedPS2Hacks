@@ -275,22 +275,29 @@ patch=1,EE,208205AC,extended,080A59AC // j 0x2966B0
 patch=1,EE,208205B0,extended,460C0302 // mul.s f12, f0, f12
 // entrypoint -- at vtable Update() method...
 patch=1,EE,208520F4,extended,008205A8
-// GimSonicSpring -- half rate hack (needed for some springs, e.g. Eggmanland)
+// GimSonicSpring -- Per-object half rate hack function (needed for some springs, e.g. Eggmanland)
 // #TODO - this needs to be rewritten with hardware timers in mind! Need to measure delta time and limit it to 1/30s somehow.
 // Until then -- overclock the EE rate to ensure that the game runs at 60FPS consistently!
-patch=1,EE,208205B4,extended,3C030082 // lui v1, 0x82
-patch=1,EE,208205B8,extended,8C6204A4 // lw v0, 0x4A4(v1) // value at 8204A4 (needs to be any memory area that is 4 byte zero)
-patch=1,EE,208205BC,extended,00401027 // nor v0, v0, zero
-patch=1,EE,208205C0,extended,14400003 // bnez v0, halfrateexit (0x8205D0)
-patch=1,EE,208205C4,extended,AC6204A4 // sw v0, 0x4A4(v1)
-patch=1,EE,208205C8,extended,080FF6C4 // j 0x3FDB10
-patch=1,EE,208205CC,extended,00000000 // nop
-                                      // halfrateexit:
-patch=1,EE,208205D0,extended,03E00008 // jr ra
-patch=1,EE,208205D4,extended,00000000 // nop
-// entrypoint -- at vtable Update() method...
-patch=1,EE,20857A14,extended,8205B4
-patch=1,EE,20859124,extended,8205B4
+// This hooks the boundary check and delays it by exactly 1 frame in case it is intersecting.
+patch=1,EE,208205B4,extended,27BDFFF0 // addiu sp, -0x10
+patch=1,EE,208205B8,extended,FFBF0000 // sd ra, 0(sp)
+patch=1,EE,208205BC,extended,0C07E0C0 // jal 0x1F8300
+patch=1,EE,208205C0,extended,00000000 // nop
+patch=1,EE,208205C4,extended,10400007 // beqz v0, 0x8205E4 // stopcheck
+patch=1,EE,208205C8,extended,8E030254 // lw v1, 0x254(s0)
+patch=1,EE,208205CC,extended,14600004 // bnez v1, 0x8205E0 // clearflag
+patch=1,EE,208205D0,extended,24020001 // li v0, 1
+patch=1,EE,208205D4,extended,AE020254 // sw v0, 0x254(s0)
+patch=1,EE,208205D8,extended,10000002 // b 0x8205E4 // stopcheck
+patch=1,EE,208205DC,extended,0000102D // move v0, zero
+                                      // clearflag:
+patch=1,EE,208205E0,extended,AE000254 // sw zero, 0x254(s0)
+                                      // stopcheck:
+patch=1,EE,208205E4,extended,DFBF0000 // ld ra, 0(sp)
+patch=1,EE,208205E8,extended,03E00008 // jr ra
+patch=1,EE,208205EC,extended,27BD0010 // addiu sp, 0x10
+// entrypoint
+patch=1,EE,203FDEBC,extended,0C20816D // jal 0x8205B4
 
 [640x448]
 author=xan1242
