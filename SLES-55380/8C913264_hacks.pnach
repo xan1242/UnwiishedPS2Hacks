@@ -250,7 +250,7 @@ patch=1,EE,202687B4,extended,10000007
 
 [Disable Werehog Unleash bar from draining during cutscenes]
 author=xan1242
-comment=Stops the Unleash bar from during in-game cutscenes.
+comment=Stops the Unleash bar from draining during in-game cutscenes.
 patch=1,EE,20820588,extended,0C0E2A04 // jal 0x38A810 // (function that checks if there's NOT an active cutscene)
 patch=1,EE,2082058C,extended,00000000 // nop
 patch=1,EE,20820590,extended,54400003 // bnezl v0, no_cutscene (0x8205A0)
