@@ -136,3 +136,7 @@ patch=1,EE,202733F8,extended,8F82CCE4 // lw v0, -0x331C(gp)
 patch=1,EE,20273408,extended,00000000 // nop
 patch=1,EE,2027340C,extended,00000000 // nop
 patch=1,EE,20273410,extended,00000000 // nop
+// BONUS -- disable the "delay" for re-activating the grab/guard. This is not possible without this implementation of Unleash activation specifically.
+patch=1,EE,003ECE50,extended,00000000
+patch=1,EE,003ECE54,extended,00000000
+patch=1,EE,003ECE58,extended,00000000
