@@ -165,7 +165,6 @@ author=xan1242
 comment=Allows you to skip movies at any point.
 patch=1,EE,2040E7B4,extended,00000000
 
-// #TODO this has been shrunk -- NEED TO SHIFT ALL THE OTHER HOOKS, THERE IS A GAP AFTER THIS ONE
 [Disable Chip's Messages]
 author=xan1242
 comment=Stops Chip's tutorial messages by preventing the TChipTalk task from starting up. (Except in Gaia Gates/Entrance Stages)
@@ -180,19 +179,19 @@ patch=1,EE,2076D508,extended,00001021 // move v0, zero
 // entrypoint
 patch=1,EE,203F4B2C,extended,0C1DB53C // jal 0x76D4F0
 
+// #TODO this has been shrunk -- NEED TO SHIFT ALL THE OTHER HOOKS, THERE IS A GAP AFTER THIS ONE
 [Disable Werehog Battle Music]
 author=xan1242
 comment=Disables the battle music in Werehog stages. (Except for stage bosses)
-patch=1,EE,2076D510,extended,24020001      // addiu v0, zero, 1
-patch=1,EE,2076D514,extended,14A20003      // bne a1, v0, notminiboss (0x0076D524)
-patch=1,EE,2076D518,extended,00000000      // nop
-patch=1,EE,2076D51C,extended,080B04D4      // j 0x2C1350
-patch=1,EE,2076D520,extended,00000000      // nop
-                                           // notminiboss:
-patch=1,EE,2076D524,extended,03E00008      // jr ra
-patch=1,EE,2076D528,extended,00000000      // nop
+patch=1,EE,2076D50C,extended,10A00003 // beqz a1, notminiboss (0x76D51C)
+patch=1,EE,2076D510,extended,00000000 // nop
+patch=1,EE,2076D514,extended,080B04D4 // j 0x2C1350
+patch=1,EE,2076D518,extended,00000000 // nop
+                                      // notminiboss:
+patch=1,EE,2076D51C,extended,03E00008 // jr ra
+patch=1,EE,2076D520,extended,00000000 // nop
 // entrypoint
-patch=1,EE,20403C74,extended,0C1DB544      // jal 0x76D510
+patch=1,EE,20403C74,extended,0C1DB543 // jal 0x76D50C
 
 [Set Werehog Levels]
 author=xan1242
