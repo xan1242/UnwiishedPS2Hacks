@@ -141,11 +141,11 @@ patch=1,EE,201DB9B4,extended,0C208152
 patch=1,EE,201DBEF8,extended,0C208152
 patch=1,EE,201DC134,extended,0C208152
 // Squat / Slide
-patch=1,EE,201D8EEC,extended,0C208152 // jal 0x76D53C -- button pressed hook
-patch=1,EE,201D8ED0,extended,0C20815B // jal 0x76D54C -- button held hook
-patch=1,EE,201B422C,extended,0C20815B // jal 0x76D54C
-patch=1,EE,201B3C74,extended,0C20815B // jal 0x76D54C
-patch=1,EE,2029C76C,extended,0C20815B // jal 0x76D54C
+patch=1,EE,201D8EEC,extended,0C208152 // button pressed hook
+patch=1,EE,201D8ED0,extended,0C20815B // button held hook
+patch=1,EE,201B422C,extended,0C20815B
+patch=1,EE,201B3C74,extended,0C20815B
+patch=1,EE,2029C76C,extended,0C20815B
 // Drift
 patch=1,EE,201D8CDC,extended,0C208152
 patch=1,EE,201BACC4,extended,0C20815B
