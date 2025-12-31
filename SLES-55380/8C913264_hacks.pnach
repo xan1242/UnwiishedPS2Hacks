@@ -262,6 +262,15 @@ patch=1,EE,208205A4,extended,00000000 // nop
 // entrypoint
 patch=1,EE,203D9B58,extended,08208162 // j 0x820588
 
+[Skip Continue Playing Dialog]
+author=xan1242
+comment=Skips the "Continue Playing?" dialog and continues with the next stage automatically.
+// EXPLANATION:
+// This sets the memset value to be 5
+// This works because when the user selects the "Yes" on the dialog, it sets specifically the flags with the value 5
+// The flag is set at 4C1A94 and is read at 4C0D7C afterwards.
+patch=1,EE,204C2104,extended,24050005
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
