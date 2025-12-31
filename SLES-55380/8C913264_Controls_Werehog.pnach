@@ -39,8 +39,8 @@ patch=1,EE,202705B0,extended,30420008
 patch=1,EE,203C1884,extended,30420008
 patch=1,EE,203DAFD4,extended,30420008
 patch=1,EE,204125C4,extended,30420008
-// Unknown (Unleash?)
-patch=1,EE,20249074,extended,30880400
+// Unknown
+patch=1,EE,20249074,extended,30880000
 // Defend
 patch=1,EE,20249078,extended,30890004
 patch=1,EE,20247258,extended,24050004
