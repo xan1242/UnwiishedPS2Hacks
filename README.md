@@ -8,8 +8,6 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 - port to other regions (currently only SLES-55380 PAL-E is supported)
 
-- add option to remove the "Continue playing?" dialog...
-
 ## Host filesystem usage
 
 1. Ensure that you have "Enable Host Filesystem" enabled in your PCSX2 settings (or `EmuCore/HostFs` enabled in the PCSX2.ini)
