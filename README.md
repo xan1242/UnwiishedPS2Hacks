@@ -6,8 +6,6 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 - figure out time scaling issues for 60FPS
 
-- remap actions to other buttons
-
 - port to other regions (currently only SLES-55380 PAL-E is supported)
 
 - add option to remove the "Continue playing?" dialog...
