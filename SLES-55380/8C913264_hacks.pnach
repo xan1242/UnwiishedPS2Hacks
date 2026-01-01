@@ -265,11 +265,17 @@ patch=1,EE,203D9B58,extended,08208162 // j 0x820588
 [Skip Continue Playing Dialog]
 author=xan1242
 comment=Skips the "Continue Playing?" dialog and continues with the next stage automatically.
+// #TODO this does not work! This makes the exit happen too early and it fails to set up the next stage's files for loading!
+// Currently using the faked pad accept method as a workaround, but ideally what needs to happen is to perform the loading, wait for it and then set the flag!
 // EXPLANATION:
 // This sets the memset value to be 5
 // This works because when the user selects the "Yes" on the dialog, it sets specifically the flags with the value 5
 // The flag is set at 4C1A94 and is read at 4C0D7C afterwards.
-patch=1,EE,204C2104,extended,24050005
+//patch=1,EE,204C2104,extended,24050005
+// Force pad accept on first poll
+patch=1,EE,204C1E90,extended,10000005
+patch=1,EE,204C1EA8,extended,00000000
+patch=1,EE,204C1DF4,extended,10000005
 
 [60FPS Mode (BUGGY)]
 author=xan1242
