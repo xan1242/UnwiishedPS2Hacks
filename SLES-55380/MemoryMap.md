@@ -35,4 +35,11 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820588            | 8205A8          | 20       | Hook | Werehog Unleash prevent drain during cutscenes                 |
 | 8205A8            | 8205B4          | C        | Hook | 60FPS CCameraChanger dT hook                                   |
 | 8205B4            | 8205F0          | 3C       | Hook | 60FPS GimSonicSpring per-obj half-rate hack func               |
-| 8205F0            | 8206D0          | E0       | Free | free space                                                     |
+| 8205F0            | 820600          | 10       | Hook | Common voice clip trampoline                                   |
+| 820600            | 820620          | 20       | Hook | Boost voice clip selector                                      |
+| 820620            | 820634          | 14       | Hook | Drift voice clip selector                                      |
+| 820634            | 820644          | 10       | Hook | Jump voice clip selector                                       |
+| 820644            | 820668          | 24       | Hook | Other voice clip selector                                      |
+| 820668            | 8206D0          | 68       | Free | free space                                                     |
+
+
