@@ -318,7 +318,6 @@ author=xan1242
 comment=Sets the screen resolution to 640x448
 patch=1,EE,204FE384,extended,24050280
 
-// #TODO remove AFS mounting procedure...
 [Read One Files Outside AFS (NoAFS) (By ID)]
 author=xan1242
 comment=Redirects all "one" file opens from the AFS into "ONE_PS2\pro_%04d.one". NOTE: You still need a ONEPS2.afs file! (you can use a dummy one)
@@ -349,6 +348,10 @@ patch=1,EE,200FD4CC,extended,00000000 // nop
 patch=1,EE,200FD4D0,extended,AE930010 // sw s3, 0x10(s4)
 patch=1,EE,200FD4D4,extended,0803F53F // j 0xFD4FC
 patch=1,EE,200FD4D8,extended,00000000 // nop
+// yeet AFS mounting
+patch=1,EE,20504E2C,extended,00000000
+patch=1,EE,20504E34,extended,00000000
+patch=1,EE,20504E40,extended,10000005
 
 [Redirect ADXRT errors to stdout]
 author=xan1242
