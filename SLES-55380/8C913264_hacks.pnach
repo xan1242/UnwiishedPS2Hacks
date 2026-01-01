@@ -288,6 +288,7 @@ patch=1,EE,2076D550,extended,24020001 // li v0, 1
 patch=1,EE,2019E880,extended,0C1DB54D // jal 0x76D534
 
 // #TODO: needs tuning...
+// #TODO: airboost is borked if you don't have a single segment...
 [Continuous Boost]
 author=xan1242
 comment=Allows you to boost continuously akin to the HD version. NOTE: You MUST remap this in case you're NOT using "Remap Sonic's Actions" cheat!
