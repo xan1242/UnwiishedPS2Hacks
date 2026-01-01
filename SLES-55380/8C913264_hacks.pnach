@@ -262,6 +262,35 @@ patch=1,EE,208205A4,extended,00000000 // nop
 // entrypoint
 patch=1,EE,203D9B58,extended,08208162 // j 0x820588
 
+[Allow Lightspeed Dash Activation While Boosting]
+author=xan1242
+comment=Allows you to activate Lightspeed Dash while boosting.
+patch=1,EE,201E2388,extended,00000000
+// lightspeed dash checker hook
+// write a singleton to 0x820494
+patch=1,EE,201A89D0,extended,3C020082 // lui v0, 0x82
+patch=1,EE,201A89D4,extended,AC510494 // sw s1, 0x494(v0)
+patch=1,EE,201A89D8,extended,00000000 // nop
+// clear the singleton
+// externally hook the destructor...
+patch=1,EE,2076D534,extended,3C020082 // lui v0, 0x82
+patch=1,EE,2076D538,extended,0806A27C // j 0x1A89F0
+patch=1,EE,2076D53C,extended,AC400494 // sw zero, 0x494(v0)
+// entrypoint
+patch=1,EE,2084E1A4,extended,0076D534
+// hook to check if boost should be cancelled
+patch=1,EE,2076D540,extended,3C020082 // lui v0, 0x82
+patch=1,EE,2076D544,extended,8C420494 // lw v0, 0x494(v0)
+patch=1,EE,2076D548,extended,14400003 // bnez v0, stopboost (0x76D558)
+patch=1,EE,2076D54C,extended,00000000 // nop
+patch=1,EE,2076D550,extended,0807677C // j 0x1D9DF0
+patch=1,EE,2076D554,extended,00000000 // nop
+                                      // stopboost:
+patch=1,EE,2076D558,extended,03E00008 // jr ra
+patch=1,EE,2076D55C,extended,24020001 // li v0, 1
+// entrypoint
+patch=1,EE,2019E880,extended,0C1DB550 // jal 0x76D540
+
 // #TODO: needs tuning...
 [Continuous Boost]
 author=xan1242
