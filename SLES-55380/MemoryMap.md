@@ -11,7 +11,9 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 76D4F0            | 76D50C          | 1C       | Hook | Disable Chip's Messages                          |
 | 76D50C            | 76D524          | 18       | Hook | Disable Werehog Battle Music                     |
 | 76D524            | 76D534          | 10       | Hook | global font spacing                              |
-| 76D534            | 76D570          | 3C       | Free | free space                                       |
+| 76D534            | 76D540          | C        | Hook | lightspeed dash destructor hook                  |
+| 76D540            | 76D560          | 20       | Hook | lightspeed dash boost ender hook                 |
+| 76D560            | 76D570          | 10       | Free | free space                                       |
 | 7F7DF0            | 7F7E58          | 68       | Var  | sprintf buffer for NoAFS byID                    |
 | 7CB580            | 7CB598          | 18       | Var  | sprintf format string for NoAFS byID             |
 | 7CB598            | 7CB5C0          | 28       | Free | free space                                       |
@@ -22,7 +24,8 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820488            | 82048C          | 4        | Var  | NPCTalk X bg translation for uw                  |
 | 82048C            | 820490          | 4        | Var  | Continuous boost drain amount                    |
 | 820490            | 820494          | 4        | Var  | Continuous boost initial drain                   |
-| 820494            | 820500          | 6C       | Free | free space                                       |
+| 820494            | 820498          | 4        | Var  | Lightspeed Dash state singleton                  |
+| 820498            | 820500          | 68       | Free | free space                                       |
 | 820500            | 820504          | 4        | Var  | "%s\\n" string for printf helpers                |
 | 820504            | 82051C          | 18       | Hook | fix NPCTalk rendering                            |
 | 82051C            | 82052C          | 10       | Hook | DrawMovieWithPos hook for uw                     |
