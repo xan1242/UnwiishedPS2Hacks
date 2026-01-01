@@ -268,8 +268,8 @@ author=xan1242
 comment=Allows you to boost continuously akin to the HD version. NOTE: You MUST remap this in case you're NOT using "Remap Sonic's Actions" cheat!
 // Button binding for boost (refer to Remap Sonic's Actions for the button mask table)
 patch=1,EE,201D9E08,extended,30420080 // andi v0, v0, 0x80
-// Amount of drainage per second
-patch=1,EE,2082048C,extended,3F000000
+// Amount of drainage per second (0.75)
+patch=1,EE,2082048C,extended,3F400000
 // Boost start penalty/drain
 patch=1,EE,20820490,extended,40000000
 
