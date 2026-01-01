@@ -277,7 +277,7 @@ patch=1,EE,201B877C,extended,AC5104A4 // sw s1, 0x4A4(v0)
 // hook to check if boost should be cancelled
 patch=1,EE,2076D534,extended,3C030082 // lui v1, 0x82
 patch=1,EE,2076D538,extended,8C6204A4 // lw v0, 0x4A4(v1)
-patch=1,EE,2076D53C,extended,54400003 // bnezl v0, stopboost (0x76D558)
+patch=1,EE,2076D53C,extended,14400003 // bnez v0, stopboost (0x76D558)
 patch=1,EE,2076D540,extended,AC6004A4 // sw zero, 0x4A4(v1)
 patch=1,EE,2076D544,extended,0807677C // j 0x1D9DF0
 patch=1,EE,2076D548,extended,00000000 // nop
