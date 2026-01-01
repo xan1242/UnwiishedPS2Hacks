@@ -387,6 +387,13 @@ patch=1,EE,201DB5DC,extended,10000007 // b 0x1DB5FC
 patch=1,EE,201DB5E0,extended,00000000 // nop
 patch=1,EE,201DB5FC,extended,4600A036 // c.le.s f20, f0
 
+// boost during loops/paths
+patch=1,EE,201DBBAC,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DBBB0,extended,00000000 // nop
+patch=1,EE,201DBBB4,extended,10000007 // b 0x1DBBD4
+patch=1,EE,201DBBB8,extended,00000000 // nop
+patch=1,EE,201DBBD4,extended,4600A036 // c.le.s f20, f0
+
 [Randomize Sonic Boost Voices]
 author=xan1242
 comment=Randomly selects between 3 voice clips for Sonic when boosting (like the HD version)
