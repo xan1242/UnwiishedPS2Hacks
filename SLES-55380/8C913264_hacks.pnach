@@ -380,6 +380,103 @@ patch=1,EE,201DBA18,extended,4600A036 // c.le.s f20, f0
 patch=1,EE,201DBF80,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DBF84,extended,00000000 // nop
 
+[Randomize Sonic Boost Voices]
+author=xan1242
+comment=Randomly selects between 3 voice clips for Sonic when boosting (like the HD version)
+// common voice clip trampoline (reusable)
+patch=1,EE,208205F0,extended,0000282D // move a1, zero
+patch=1,EE,208205F4,extended,0000302D // move a2, zero
+patch=1,EE,208205F8,extended,080B170C // j uPlaySFXFunc (0x2C5C30)
+patch=1,EE,208205FC,extended,0000382D // move a3, zero
+// boost voice clip select between "hiyah", "woo" and "go" ("go" being the default case)
+patch=1,EE,20820600,extended,50600005 // beqzl v1, exitpoint (0x820618)
+patch=1,EE,20820604,extended,3C02000A // lui v0, 0xA
+patch=1,EE,20820608,extended,24020001 // li v0, 1
+patch=1,EE,2082060C,extended,50620002 // beql v1, v0, exitpoint (0x820618)
+patch=1,EE,20820610,extended,3C02000B // lui v0, 0xB
+patch=1,EE,20820614,extended,3C020011 // lui v0, 0x11
+                                      // exitpoint:
+patch=1,EE,20820618,extended,0820817C // j voicetrampoline (0x8205F0)
+patch=1,EE,2082061C,extended,34443EA9 // ori a0, v0, 0x3EA9
+// pre & entrypoint
+patch=1,EE,20190DBC,extended,0C1A0142 // jal rand (0x680508)
+patch=1,EE,20190DC0,extended,00000000 // nop
+patch=1,EE,20190DC4,extended,24030003 // li v1, 3 // 3 possible voice clips
+patch=1,EE,20190DC8,extended,0043001B // divu v0, v1
+patch=1,EE,20190DCC,extended,0C208180 // jal 0x820600
+patch=1,EE,20190DD0,extended,00001810 // mfhi v1
+
+[Randomize Sonic Drift Voices]
+author=xan1242
+comment=Randomly selects between 2 voice clips for Sonic when drifting
+// randomize drift grunts
+// common voice clip trampoline (reusable)
+patch=1,EE,208205F0,extended,0000282D // move a1, zero
+patch=1,EE,208205F4,extended,0000302D // move a2, zero
+patch=1,EE,208205F8,extended,080B170C // j uPlaySFXFunc (0x2C5C30)
+patch=1,EE,208205FC,extended,0000382D // move a3, zero
+// drift voice clip select between 2 grunts (to be more like HD)
+patch=1,EE,20820620,extended,50600002 // beqzl v1, exitpoint (0x820634)
+patch=1,EE,20820624,extended,3C020009 // lui v0, 9
+patch=1,EE,20820628,extended,3C020008 // lui v0, 8
+                                      // exitpoint:
+patch=1,EE,2082062C,extended,0820817C // j voicetrampoline (0x8205F0)
+patch=1,EE,20820630,extended,34443EA9 // ori a0, v0, 0x3EA9
+// pre & entrypoint
+patch=1,EE,20190DDC,extended,0C1A0142 // jal rand (0x680508)
+patch=1,EE,20190DE0,extended,00000000 // nop
+patch=1,EE,20190DE4,extended,24030003 // li v1, 2 // 2 possible voice clips
+patch=1,EE,20190DE8,extended,0043001B // divu v0, v1
+patch=1,EE,20190DEC,extended,0C208188 // jal 0x820620
+patch=1,EE,20190DF0,extended,00001810 // mfhi v1
+
+[Randomize Sonic Jump Voices]
+author=xan1242
+comment=Randomly selects between 3 voice clips for Sonic when jumping
+// common voice clip trampoline (reusable)
+patch=1,EE,208205F0,extended,0000282D // move a1, zero
+patch=1,EE,208205F4,extended,0000302D // move a2, zero
+patch=1,EE,208205F8,extended,080B170C // j uPlaySFXFunc (0x2C5C30)
+patch=1,EE,208205FC,extended,0000382D // move a3, zero
+// play randomized jump grunts
+patch=1,EE,20820634,extended,00001010 // mfhi v0
+patch=1,EE,20820638,extended,00021400 // sll v0, v0, 16 // we can directly map values into the upper half of the register
+patch=1,EE,2082063C,extended,0820817C // j voicetrampoline (0x8205F0)
+patch=1,EE,20820640,extended,34443EA9 // ori a0, v0, 0x3EA9
+// pre & entrypoint
+patch=1,EE,20190CE0,extended,0C1A0142 // jal rand (0x680508)
+patch=1,EE,20190CE4,extended,00000000 // nop
+patch=1,EE,20190CE8,extended,24030003 // li v1, 3 // 3 possible voice clips
+patch=1,EE,20190CEC,extended,0C20818D // jal 0x820634
+patch=1,EE,20190CF0,extended,0043001B // divu v0, v1 // we'll have to mfhi in the hook
+
+[Randomize Sonic's Other Voices]
+author=xan1242
+comment=Randomly selects between 5 voice clips for Sonic when doing other things (woo-hoo, etc.)
+// randomized woohoos and stuff
+patch=1,EE,2082064C,extended,50600006 // beqzl v1, exitpoint (0x820668)
+patch=1,EE,20820650,extended,3C02000B // lui v0, 0xB
+patch=1,EE,20820654,extended,28620004 // slti v0, v1, 4
+patch=1,EE,20820658,extended,50400003 // beqzl v0, exitpoint (0x820668)
+patch=1,EE,2082065C,extended,3C020003 // lui v0, 3
+patch=1,EE,20820660,extended,2462000C // addiu v0, v1, 0xC
+patch=1,EE,20820664,extended,00021400 // sll v0, v0, 16
+                                      // exitpoint:
+patch=1,EE,20820668,extended,0820817C // j voicetrampoline (0x8205F0)
+patch=1,EE,2082066C,extended,34443EA9 // ori a0, v0, 0x3EA9
+// pre & entrypoint
+patch=1,EE,20190E5C,extended,0C1A0142 // jal rand (0x680508)
+patch=1,EE,20190E60,extended,00000000 // nop
+patch=1,EE,20190E64,extended,24030005 // li v1, 5 // 5 possible voice clips
+patch=1,EE,20190E68,extended,0043001B // divu v0, v1
+patch=1,EE,20190E6C,extended,0C208193 // jal 0x82064C
+patch=1,EE,20190E70,extended,00001810 // mfhi v1
+// redirects
+patch=1,EE,20190E7C,extended,08064397 // j 0x190E5C
+patch=1,EE,20190E80,extended,00000000
+patch=1,EE,20190EBC,extended,08064397 // j 0x190E5C
+patch=1,EE,20190EC0,extended,00000000
+
 [Skip Continue Playing Dialog]
 author=xan1242
 comment=Skips the "Continue Playing?" dialog and continues with the next stage automatically.
