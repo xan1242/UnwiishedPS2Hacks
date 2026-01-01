@@ -278,7 +278,7 @@ patch=1,EE,2076D538,extended,0806A27C // j 0x1A89F0
 patch=1,EE,2076D53C,extended,AC400494 // sw zero, 0x494(v0)
 // entrypoint
 patch=1,EE,2084E1A4,extended,0076D534
-// #TODO this may be a bit extreme...
+// #TODO this may be a bit extreme... maybe reuse the var for global cancellation and remove the destructor hook?
 // hook to check if boost should be cancelled
 patch=1,EE,2076D540,extended,3C020082 // lui v0, 0x82
 patch=1,EE,2076D544,extended,8C420494 // lw v0, 0x494(v0)
