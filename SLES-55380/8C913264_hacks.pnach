@@ -459,22 +459,22 @@ patch=1,EE,208205F4,extended,0000302D // move a2, zero
 patch=1,EE,208205F8,extended,080B170C // j uPlaySFXFunc (0x2C5C30)
 patch=1,EE,208205FC,extended,0000382D // move a3, zero
 // randomized woohoos and stuff
-patch=1,EE,2082064C,extended,50600006 // beqzl v1, exitpoint (0x820668)
-patch=1,EE,20820650,extended,3C02000B // lui v0, 0xB
-patch=1,EE,20820654,extended,28620004 // slti v0, v1, 4
-patch=1,EE,20820658,extended,50400003 // beqzl v0, exitpoint (0x820668)
-patch=1,EE,2082065C,extended,3C020003 // lui v0, 3
-patch=1,EE,20820660,extended,2462000C // addiu v0, v1, 0xC
-patch=1,EE,20820664,extended,00021400 // sll v0, v0, 16
+patch=1,EE,20820644,extended,50600006 // beqzl v1, exitpoint (0x820668)
+patch=1,EE,20820648,extended,3C02000B // lui v0, 0xB
+patch=1,EE,2082064C,extended,28620004 // slti v0, v1, 4
+patch=1,EE,20820650,extended,50400003 // beqzl v0, exitpoint (0x820668)
+patch=1,EE,20820654,extended,3C020003 // lui v0, 3
+patch=1,EE,20820658,extended,2462000C // addiu v0, v1, 0xC
+patch=1,EE,2082065C,extended,00021400 // sll v0, v0, 16
                                       // exitpoint:
-patch=1,EE,20820668,extended,0820817C // j voicetrampoline (0x8205F0)
-patch=1,EE,2082066C,extended,34443EA9 // ori a0, v0, 0x3EA9
+patch=1,EE,20820660,extended,0820817C // j voicetrampoline (0x8205F0)
+patch=1,EE,20820664,extended,34443EA9 // ori a0, v0, 0x3EA9
 // pre & entrypoint
 patch=1,EE,20190E5C,extended,0C1A0142 // jal rand (0x680508)
 patch=1,EE,20190E60,extended,00000000 // nop
 patch=1,EE,20190E64,extended,24030005 // li v1, 5 // 5 possible voice clips
 patch=1,EE,20190E68,extended,0043001B // divu v0, v1
-patch=1,EE,20190E6C,extended,0C208193 // jal 0x82064C
+patch=1,EE,20190E6C,extended,0C208191 // jal 0x820644
 patch=1,EE,20190E70,extended,00001810 // mfhi v1
 // redirects
 patch=1,EE,20190E7C,extended,08064397 // j 0x190E5C
