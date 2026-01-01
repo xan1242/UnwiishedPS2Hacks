@@ -320,7 +320,7 @@ patch=1,EE,204FE384,extended,24050280
 
 [Read One Files Outside AFS (NoAFS) (By ID)]
 author=xan1242
-comment=Redirects all "one" file opens from the AFS into "ONE_PS2\pro_%04d.one". NOTE: You still need a ONEPS2.afs file! (you can use a dummy one)
+comment=Redirects all "one" file opens from the AFS into "ONE_PS2\pro_%04d.one".
 // format string -- "ONE_PS2\\pro_%04d.one\0"
 patch=1,EE,207CB580,bytes,4F4E455F5053325C70726F5F253034642E6F6E6500
 // hook
