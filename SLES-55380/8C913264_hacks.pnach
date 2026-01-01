@@ -453,6 +453,11 @@ patch=1,EE,20190CF0,extended,0043001B // divu v0, v1 // we'll have to mfhi in th
 [Randomize Sonic's Other Voices]
 author=xan1242
 comment=Randomly selects between 5 voice clips for Sonic when doing other things (woo-hoo, etc.)
+// common voice clip trampoline (reusable)
+patch=1,EE,208205F0,extended,0000282D // move a1, zero
+patch=1,EE,208205F4,extended,0000302D // move a2, zero
+patch=1,EE,208205F8,extended,080B170C // j uPlaySFXFunc (0x2C5C30)
+patch=1,EE,208205FC,extended,0000382D // move a3, zero
 // randomized woohoos and stuff
 patch=1,EE,2082064C,extended,50600006 // beqzl v1, exitpoint (0x820668)
 patch=1,EE,20820650,extended,3C02000B // lui v0, 0xB
