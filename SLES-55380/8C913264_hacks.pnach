@@ -324,7 +324,7 @@ comment=Redirects all "one" file opens from the AFS into "ONE_PS2\pro_%04d.one".
 // format string -- "ONE_PS2\\pro_%04d.one\0"
 patch=1,EE,207CB580,bytes,4F4E455F5053325C70726F5F253034642E6F6E6500
 // hook
-// expand the stack to store by 0x10 the buffer ptr in it
+// expand the stack by 0x10 to store the buffer ptr in it
 patch=1,EE,200FD460,extended,27BDFF90 // addiu sp, -0x70
 patch=1,EE,200FD518,extended,27BD0070 // addiu sp, 0x70
 // generate filename and redirect to the file open function to the one by filename
