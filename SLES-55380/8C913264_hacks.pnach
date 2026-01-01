@@ -325,26 +325,31 @@ patch=1,EE,201DB800,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DB804,extended,00000000 // nop
 patch=1,EE,201DB808,extended,10000007 // b 0x1DB828
 patch=1,EE,201DB80C,extended,00000000 // nop
+patch=1,EE,201DB828,extended,4600A036 // c.le.s f20, f0
 
 patch=1,EE,201DC170,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DC174,extended,00000000 // nop
 patch=1,EE,201DC178,extended,10000007 // b 0x1DC198
 patch=1,EE,201DC17C,extended,00000000 // nop
+patch=1,EE,201DC198,extended,4600A036 // c.le.s f20, f0
 
 patch=1,EE,201DC344,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DC348,extended,00000000 // nop
 patch=1,EE,201DC34C,extended,10000007 // b 0x1DC36C
 patch=1,EE,201DC350,extended,00000000 // nop
+patch=1,EE,201DC36C,extended,4600A036 // c.le.s f20, f0
 
 patch=1,EE,201DBD5C,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DBD60,extended,00000000 // nop
 patch=1,EE,201DBD64,extended,10000007 // b 0x1DBD84
 patch=1,EE,201DBD68,extended,00000000 // nop
+patch=1,EE,201DBD84,extended,4600A036 // c.le.s f20, f0
 
 patch=1,EE,201DB9F0,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DB9F4,extended,00000000 // nop
 patch=1,EE,201DB9F8,extended,10000007 // b 0x1DBA18
 patch=1,EE,201DB9FC,extended,00000000 // nop
+patch=1,EE,201DBA18,extended,4600A036 // c.le.s f20, f0
 
 patch=1,EE,201DBF80,extended,44800000 // mtc1 zero, f0
 patch=1,EE,201DBF84,extended,00000000 // nop
