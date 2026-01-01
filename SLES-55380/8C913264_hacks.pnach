@@ -318,6 +318,38 @@ author=xan1242
 comment=Sets the screen resolution to 640x448
 patch=1,EE,204FE384,extended,24050280
 
+// #TODO remove AFS mounting procedure...
+[Read One Files Outside AFS (NoAFS) (By ID)]
+author=xan1242
+comment=Redirects all "one" file opens from the AFS into "ONE_PS2\pro_%04d.one". NOTE: You still need a ONEPS2.afs file! (you can use a dummy one)
+// format string -- "ONE_PS2\\pro_%04d.one\0"
+patch=1,EE,207CB580,bytes,4F4E455F5053325C70726F5F253034642E6F6E6500
+// hook
+// expand the stack to store by 0x10 the buffer ptr in it
+patch=1,EE,200FD460,extended,27BDFF90 // addiu sp, -0x70
+patch=1,EE,200FD518,extended,27BD0070 // addiu sp, 0x70
+// generate filename and redirect to the file open function to the one by filename
+patch=1,EE,200FD490,extended,00403021 // move a2, v0
+patch=1,EE,200FD494,extended,0040982D // move s3, v0
+patch=1,EE,200FD498,extended,3C04007F // lui a0, 0x7F
+patch=1,EE,200FD49C,extended,24847DF0 // addiu a0, a0, 0x7DF0
+patch=1,EE,200FD4A0,extended,FFA40060 // sd a0, 0x60(sp)
+patch=1,EE,200FD4A4,extended,3C05007D // lui a1, 0x7D
+patch=1,EE,200FD4A8,extended,0C1A04AC // jal sprintf (0x6812B0)
+patch=1,EE,200FD4AC,extended,24A5B580 // addiu a1, a1, 0xB580
+patch=1,EE,200FD4B0,extended,DFA50060 // ld a1, 0x60(sp)
+patch=1,EE,200FD4B4,extended,02802021 // move a0, s4
+patch=1,EE,200FD4B8,extended,02403021 // move a2, s2
+patch=1,EE,200FD4BC,extended,02203821 // move a3, s1
+patch=1,EE,200FD4C0,extended,0C03F498 // jal uOpenFileThingy (FD260)
+patch=1,EE,200FD4C4,extended,02004021 // move a4, s0
+                                      // hack -- assign ID as file handle
+patch=1,EE,200FD4C8,extended,1040000D // beqz v0, 0xFD4FC
+patch=1,EE,200FD4CC,extended,00000000 // nop
+patch=1,EE,200FD4D0,extended,AE930010 // sw s3, 0x10(s4)
+patch=1,EE,200FD4D4,extended,0803F53F // j 0xFD4FC
+patch=1,EE,200FD4D8,extended,00000000 // nop
+
 [Redirect ADXRT errors to stdout]
 author=xan1242
 comment=Pipes the CRI ADXRT library error outputs to the TTY. Useful for debugging/development.

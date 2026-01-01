@@ -24,4 +24,8 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 7. Reset
 
+## NoAFS usage
 
+1. Extract ONEPS2.afs using [AFSPacker](https://github.com/MaikelChan/AFSPacker/releases/latest) into a directory named `ONE_PS2` located next to the executable. Filenames should be in format `pro_0000.one`, `pro_0001.one`, etc.
+
+2. If you want to remove the ONEPS2.afs file - remove it and create a dummy ONEPS2.afs file with the magic bytes at top `41 46 53 00` (or download the one from the repo here). (TBD -- this requirement will be removed later)

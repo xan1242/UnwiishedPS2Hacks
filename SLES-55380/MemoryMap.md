@@ -12,6 +12,9 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 76D50C            | 76D524          | 18       | Hook | Disable Werehog Battle Music                     |
 | 76D524            | 76D534          | 10       | Hook | global font spacing                              |
 | 76D534            | 76D570          | 3C       | Free | free space                                       |
+| 7F7DF0            | 7F7E58          | 68       | Var  | sprintf buffer for NoAFS byID                    |
+| 7CB580            | 7CB598          | 18       | Var  | sprintf format string for NoAFS byID             |
+| 7CB598            | 7CB5C0          | 28       | Free | free space                                       |
 | 820478            | 82047C          | 4        | Var  | global font spacing value                        |
 | 82047C            | 820480          | 4        | Var  | ultrawide movie player mov_r                     |
 | 820480            | 820484          | 4        | Var  | ultrawide movie player mov_l                     |
@@ -28,5 +31,3 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 8205A8            | 8205B4          | C        | Hook | 60FPS CCameraChanger dT hook                     |
 | 8205B4            | 8205F0          | 3C       | Hook | 60FPS GimSonicSpring per-obj half-rate hack func |
 | 8205F0            | 8206D0          | E0       | Free | free space                                       |
-
-
