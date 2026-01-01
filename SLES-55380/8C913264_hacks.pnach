@@ -262,6 +262,93 @@ patch=1,EE,208205A4,extended,00000000 // nop
 // entrypoint
 patch=1,EE,203D9B58,extended,08208162 // j 0x820588
 
+// #TODO: needs tuning...
+[Continuous Boost]
+author=xan1242
+comment=Allows you to boost continuously akin to the HD version. NOTE: You MUST remap this in case you're NOT using "Remap Sonic's Actions" cheat!
+// Button binding for boost (refer to Remap Sonic's Actions for the button mask table)
+patch=1,EE,201D9E08,extended,30420080 // andi v0, v0, 0x80
+// Amount of drainage per second
+patch=1,EE,2082048C,extended,3F000000
+// Boost start penalty/drain
+patch=1,EE,20820490,extended,40000000
+
+// HOOK CODE -- DO NOT TOUCH THIS
+// hook boost end checks
+// needed because of changed offsets
+patch=1,EE,201D9DFC,extended,5040000C // beqzl v0, exitpoint (0x1D9E30)
+// button check + boost amount check (at 0xDFC)
+patch=1,EE,201D9E04,extended,8F82CCDC // lw v0, -0x3324(gp)
+// patch=1,EE,201D9E08,extended,30420080 // andi v0, v0, 0x80 <-- this is the binding, so it's up above...
+patch=1,EE,201D9E0C,extended,10400006 // beqz v0, stopboost (1D9E28)
+patch=1,EE,201D9E10,extended,C4810DFC // lwc1 f1, 0xDFC(a0)
+patch=1,EE,201D9E14,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201D9E18,extended,00000000 // nop
+patch=1,EE,201D9E1C,extended,46000836 // c.le.s f1, f0
+patch=1,EE,201D9E20,extended,45020003 // bc1fl exitpoint (0x1D9E30)
+patch=1,EE,201D9E24,extended,0000102D // move v0, zero
+                                      // stopboost:
+patch=1,EE,201D9E28,extended,0C076790 // jal 0x1D9E40
+patch=1,EE,201D9E2C,extended,24020001 // li v0, 1
+                                      // exitpoint:
+patch=1,EE,201D9E30,extended,DFBF0000 // ld ra, 0(sp)
+patch=1,EE,201D9E34,extended,03E00008 // jr ra
+patch=1,EE,201D9E38,extended,27BD0010 // addiu sp, 0x10
+// hook boost drainage
+// replace the original one and add initial penalty...
+patch=1,EE,201D9CF4,extended,3C020082 // lui v0, 0x82
+patch=1,EE,201D9CF8,extended,C4410490 // lwc1 f1, 0x490(v0)
+patch=1,EE,201D9CFC,extended,46010001 // sub.s f0, f0, f1
+// also ensure that it is clamped to zero...
+patch=1,EE,201D9D00,extended,00000000 // nop 
+patch=1,EE,201D9D04,extended,44800800 // mtc1 zero, f1
+// custom drainer
+patch=1,EE,201D9D30,extended,90820E0C // lbu v0, 0xE0C(a0)
+patch=1,EE,201D9D34,extended,1040000B // beqz v0, exitpoint (0x1D9D64)
+patch=1,EE,201D9D38,extended,3C020082 // lui v0, 0x82
+patch=1,EE,201D9D3C,extended,C440048C // lwc1 f0, 0x48C(v0)
+patch=1,EE,201D9D40,extended,46006002 // mul.s f0, f12, f0
+patch=1,EE,201D9D44,extended,C4810DFC // lwc1 f1, 0xDFC(a0)
+patch=1,EE,201D9D48,extended,46000801 // sub.s f0, f1, f0
+patch=1,EE,201D9D4C,extended,44800800 // mtc1 zero, f1
+patch=1,EE,201D9D50,extended,00000000 // nop
+patch=1,EE,201D9D54,extended,46010036 // c.le.s f0, f1
+patch=1,EE,201D9D58,extended,45030001 // bc1tl writepoint
+patch=1,EE,201D9D5C,extended,46000806 // mov.s f0, f1
+                                      // writepoint:
+patch=1,EE,201D9D60,extended,E4800DFC // swc1 f0, 0xDFC(a0)
+                                      // exitpoint:
+patch=1,EE,201D9D64,extended,03E00008 // jr ra
+patch=1,EE,201D9D68,extended,00000000 // nop
+// patch minimum boost value checks
+patch=1,EE,201DB800,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DB804,extended,00000000 // nop
+patch=1,EE,201DB808,extended,10000007 // b 0x1DB828
+patch=1,EE,201DB80C,extended,00000000 // nop
+
+patch=1,EE,201DC170,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DC174,extended,00000000 // nop
+patch=1,EE,201DC178,extended,10000007 // b 0x1DC198
+patch=1,EE,201DC17C,extended,00000000 // nop
+
+patch=1,EE,201DC344,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DC348,extended,00000000 // nop
+patch=1,EE,201DC34C,extended,10000007 // b 0x1DC36C
+patch=1,EE,201DC350,extended,00000000 // nop
+
+patch=1,EE,201DBD5C,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DBD60,extended,00000000 // nop
+patch=1,EE,201DBD64,extended,10000007 // b 0x1DBD84
+patch=1,EE,201DBD68,extended,00000000 // nop
+
+patch=1,EE,201DB9F0,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DB9F4,extended,00000000 // nop
+patch=1,EE,201DB9F8,extended,10000007 // b 0x1DBA18
+patch=1,EE,201DB9FC,extended,00000000 // nop
+
+patch=1,EE,201DBF80,extended,44800000 // mtc1 zero, f0
+patch=1,EE,201DBF84,extended,00000000 // nop
+
 [Skip Continue Playing Dialog]
 author=xan1242
 comment=Skips the "Continue Playing?" dialog and continues with the next stage automatically.

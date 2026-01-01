@@ -20,7 +20,9 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820480            | 820484          | 4        | Var  | ultrawide movie player mov_l                     |
 | 820484            | 820488          | 4        | Var  | NPCTalk X scale for ws/uw                        |
 | 820488            | 82048C          | 4        | Var  | NPCTalk X bg translation for uw                  |
-| 82048C            | 820500          | 74       | Free | free space                                       |
+| 82048C            | 820490          | 4        | Var  | Continuous boost drain amount                    |
+| 820490            | 820494          | 4        | Var  | Continuous boost initial drain                   |
+| 820494            | 820500          | 6C       | Free | free space                                       |
 | 820500            | 820504          | 4        | Var  | "%s\\n" string for printf helpers                |
 | 820504            | 82051C          | 18       | Hook | fix NPCTalk rendering                            |
 | 82051C            | 82052C          | 10       | Hook | DrawMovieWithPos hook for uw                     |
