@@ -284,6 +284,11 @@ patch=1,EE,2076D548,extended,00000000 // nop
                                       // stopboost:
 patch=1,EE,2076D54C,extended,03E00008 // jr ra
 patch=1,EE,2076D550,extended,24020001 // li v0, 1
+// hook at boost start
+patch=1,EE,2019E6D0,extended,3C030082 // lui v1, 0x82
+patch=1,EE,2019E6D4,extended,AC6004A4 // sw zero, 0x4A4(v1)
+patch=1,EE,2019E6D8,extended,03E00008 // jr ra
+patch=1,EE,2019E6DC,extended,27BD0230 // addiu sp, 0x230
 // entrypoint
 patch=1,EE,2019E880,extended,0C1DB54D // jal 0x76D534
 
