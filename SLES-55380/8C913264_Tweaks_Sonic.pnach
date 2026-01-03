@@ -32,6 +32,11 @@ author=xan1242
 comment=Disables the stutter/slowdown whenever you deal damage during boost.
 patch=1,EE,201C8700,extended,1000000D
 
+[Disable Fall Struggle Animation]
+author=xan1242
+comment=Disables the struggle animation while falling.
+patch=1,EE,201B67E8,extended,10000005
+
 [Allow Lightspeed Dash Activation While Boosting]
 author=xan1242
 comment=Allows you to activate Lightspeed Dash while boosting.
