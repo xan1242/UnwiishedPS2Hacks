@@ -251,6 +251,11 @@ comment=Speeds up the werehog's dash stop animations by skipping animation finis
 patch=1,EE,202687AC,extended,00000000
 patch=1,EE,202687B4,extended,10000007
 
+[Disable Werehog hitstops]
+author=xan1242
+comment=Disables all hitstops for Werehog.
+patch=1,EE,202F2790,extended,AC400000
+
 [Disable Werehog Unleash bar from draining during cutscenes]
 author=xan1242
 comment=Stops the Unleash bar from draining during in-game cutscenes.
