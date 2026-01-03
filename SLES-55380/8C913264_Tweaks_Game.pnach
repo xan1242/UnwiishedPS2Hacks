@@ -208,6 +208,27 @@ author=xan1242
 comment=Re-enables menu music in the Options Menu.
 patch=1,EE,20456A38,extended,24050041 // you can edit the last byte to change the music ID to your liking... the order of IDs follow the array of BGMs found at 0x762390
 
+[Force Japanese Language]
+author=xan1242
+comment=Forces the Japanese language to be active.
+patch=1,EE,20873878,byte,00
+
+// if only we could put radio buttons...
+[Force PS Controller Type]
+author=xan1242
+comment=Forces the PlayStation controller icons and type. (Use this to revert to default)
+patch=1,EE,2087387D,byte,00
+
+[Force Wii Classic Controller Type]
+author=xan1242
+comment=Forces the Wii Classic Controller controller icons and type.
+patch=1,EE,2087387D,byte,01
+
+[Force GameCube Controller Type]
+author=xan1242
+comment=Forces the GameCube Controller controller icons and type.
+patch=1,EE,2087387D,byte,02
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
