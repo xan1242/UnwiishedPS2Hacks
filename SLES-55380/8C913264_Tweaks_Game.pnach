@@ -203,6 +203,11 @@ author=xan1242
 comment=Disables the beeping sound effect during the loading screen.
 patch=1,EE,20463598,extended,10000011
 
+[Music in Options Menu]
+author=xan1242
+comment=Re-enables menu music in the Options Menu.
+patch=1,EE,20456A38,extended,24050041 // you can edit the last byte to change the music ID to your liking... the order of IDs follow the array of BGMs found at 0x762390
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
