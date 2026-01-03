@@ -262,6 +262,31 @@ patch=1,EE,208205A4,extended,00000000 // nop
 // entrypoint
 patch=1,EE,203D9B58,extended,08208162 // j 0x820588
 
+[Play Howl on Werehog Unleash]
+author=xan1242
+comment=Play the howl when Werehog Unleash state is activated.
+// common function - play BGM with just the ID in a1 (this can be reused for other purposes if needed)
+patch=1,EE,2076D554,extended,8F82B2F4 // lw v0, -0x4D0C(gp) // 8732E4 has a thing that contains the BGM obj, can be null so we check for that
+patch=1,EE,2076D558,extended,54400003 // bnezl v0, cont (0x76D568)
+patch=1,EE,2076D55C,extended,8C440008 // lw a0, 8(v0)
+patch=1,EE,2076D560,extended,03E00008 // jr ra
+patch=1,EE,2076D564,extended,0000102D // move v0, zero
+                                      // cont:
+patch=1,EE,2076D568,extended,080B02F8 // j 0x2C0BE0 (PlayBgm) // a1 should be set as an input param beforehand
+patch=1,EE,2076D56C,extended,0000302D // move a2, zero
+// play howl on unleash hook
+patch=1,EE,20820668,extended,27BDFFF0 // addiu sp, -0x10
+patch=1,EE,2082066C,extended,FFBF0000 // sd ra, 0(sp)
+patch=1,EE,20820670,extended,0C099DAC // jal 0x2676B0 (uUpdateWerehogStateThing)
+patch=1,EE,20820674,extended,00000000 // nop
+patch=1,EE,20820678,extended,0C1DB555 // jal 0x76D554 (play bgm custom func)
+patch=1,EE,2082067C,extended,2405000C // li a1, 0xC // Howl "BGM" ID
+patch=1,EE,20820680,extended,DFBF0000 // ld ra, 0(sp)
+patch=1,EE,20820684,extended,03E00008 // jr ra
+patch=1,EE,20820688,extended,27BD0010 // addiu sp, 0x10
+// entrypoint
+patch=1,EE,20273440,extended,0C20819A // jal 0x820668
+
 [Allow Lightspeed Dash Activation While Boosting]
 author=xan1242
 comment=Allows you to activate Lightspeed Dash while boosting.

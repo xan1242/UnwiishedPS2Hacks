@@ -12,7 +12,7 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 76D50C            | 76D524          | 18       | Hook | Disable Werehog Battle Music                                   |
 | 76D524            | 76D534          | 10       | Hook | global font spacing                                            |
 | 76D534            | 76D554          | 20       | Hook | lightspeed dash boost ender hook                               |
-| 76D554            | 76D570          | 1C       | Free | free space                                                     |
+| 76D554            | 76D570          | 1C       | Hook | PlayBGM wrapper                                                |
 | 7F7DF0            | 7F7E58          | 68       | Var  | sprintf buffer for NoAFS byID                                  |
 | 7CB580            | 7CB598          | 18       | Var  | sprintf format string for NoAFS byID                           |
 | 7CB598            | 7CB5C0          | 28       | Free | free space                                                     |
@@ -40,6 +40,5 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820620            | 820634          | 14       | Hook | Drift voice clip selector                                      |
 | 820634            | 820644          | 10       | Hook | Jump voice clip selector                                       |
 | 820644            | 820668          | 24       | Hook | Other voice clip selector                                      |
-| 820668            | 8206D0          | 68       | Free | free space                                                     |
-
-
+| 820668            | 82068C          | 24       | Hook | Werehog howl on unleash hook                                   |
+| 82068C            | 8206D0          | 44       | Free | free space                                                     |
