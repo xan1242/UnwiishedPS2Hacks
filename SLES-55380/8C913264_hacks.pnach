@@ -228,6 +228,11 @@ author=xan1242
 comment=Disables automatic sliding on slopes/walls.
 patch=1,EE,201B6370,extended,10000038
 
+[Disable Hitstop/Slowdown On Boost Damage]
+author=xan1242
+comment=Disables the stutter/slowdown whenever you deal damage during boost.
+patch=1,EE,201C8700,extended,1000000D
+
 [Speed up Werehog Ledge Climb]
 author=xan1242
 comment=Speeds up the werehog's ledge climbing by skipping animation finish checks.
