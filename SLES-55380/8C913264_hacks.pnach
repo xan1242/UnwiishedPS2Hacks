@@ -584,6 +584,14 @@ patch=1,EE,208205E8,extended,03E00008 // jr ra
 patch=1,EE,208205EC,extended,27BD0010 // addiu sp, 0x10
 // entrypoint
 patch=1,EE,203FDEBC,extended,0C20816D // jal 0x8205B4
+// fix simulation slowdown times for 60FPS (HitStop)
+patch=1,EE,201ECAC8,extended,C7809E90 // lwc1 f0, -0x6170(gp) // use a static 2.0 value found at 0x871E80
+//patch=1,EE,201ECACC,extended,460C0302 // mul.s f12, f0, f12 // speed mul -- ignored for now...
+patch=1,EE,201ECACC,extended,00000000 // nop
+patch=1,EE,201ECAD0,extended,460D0342 // mul.s f13, f0, f13 // time mul
+patch=1,EE,201ECAD4,extended,E48C0014 // swc f12, 0x14(a0)
+patch=1,EE,201ECAD8,extended,03E00008 // jr ra
+patch=1,EE,201ECADC,extended,E48D0018 // swc f13, 0x18(a0)
 
 [640x448]
 author=xan1242
