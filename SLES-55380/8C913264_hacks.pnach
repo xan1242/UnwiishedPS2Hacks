@@ -179,7 +179,6 @@ patch=1,EE,2076D508,extended,00001021 // move v0, zero
 // entrypoint
 patch=1,EE,203F4B2C,extended,0C1DB53C // jal 0x76D4F0
 
-// #TODO this has been shrunk -- NEED TO SHIFT ALL THE OTHER HOOKS, THERE IS A GAP AFTER THIS ONE
 [Disable Werehog Battle Music]
 author=xan1242
 comment=Disables the battle music in Werehog stages. (Except for stage bosses)
