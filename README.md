@@ -26,6 +26,10 @@ Here are some of my hacks made for Unleashed PS2 during a quick session of screw
 
 ## NoAFS usage
 
-1. Extract ONEPS2.afs using [AFSPacker](https://github.com/MaikelChan/AFSPacker/releases/latest) into a directory named `ONE_PS2` located next to the executable. Filenames should be in format `pro_0000.one`, `pro_0001.one`, etc.
+1. Extract ONEPS2.afs using [AFSPacker](https://github.com/MaikelChan/AFSPacker/releases/latest) into a directory named `ONE_PS2` located next to the executable. 
 
-2. You can now safely load the game without ONEPS2.afs
+2. The AFSPacker tool may produce files with names `pro`, `pro (1)`, `pro (2)`, etc. In this case, rename the files using a bulk file renaming tool. The filenames should be in format `pro_0000.one`, `pro_0001.one`, `pro_0002.one`, etc.
+
+3. Enable the cheat `Read One Files Outside AFS (NoAFS) (By ID)` found in the Filesystem pnach.
+
+4. You can now safely load the game without ONEPS2.afs
