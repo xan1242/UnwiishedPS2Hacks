@@ -41,4 +41,5 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820634            | 820644          | 10       | Hook | Jump voice clip selector                                       |
 | 820644            | 820668          | 24       | Hook | Other voice clip selector                                      |
 | 820668            | 82068C          | 24       | Hook | Werehog howl on unleash hook                                   |
-| 82068C            | 8206D0          | 44       | Free | free space                                                     |
+| 82068C            | 8206B4          | 28       | Hook | JP voice sound bank ID patcher                                 |
+| 8206B4            | 8206D0          | 1C       | Free | free space                                                     |

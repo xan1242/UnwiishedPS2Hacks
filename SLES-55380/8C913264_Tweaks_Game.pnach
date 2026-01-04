@@ -229,6 +229,30 @@ author=xan1242
 comment=Forces the GameCube Controller controller icons and type.
 patch=1,EE,2087387D,byte,02
 
+[Use Japanese Voice (Ingame Only)]
+author=xan1242
+comment=Loads the JP voice sound banks instead of the EN ones. NOTE: This will only affect ingame voices. The game normally lacks the other JP audio files!
+// replace checks for the JP voice IDs for the EN ones to avoid loading them (and allow loading JP voices)
+patch=1,EE,200EB00C,extended,24020003 // li v0, 3
+patch=1,EE,200EB018,extended,2402000A // li v0, 0xA
+// next, we have to intercept bank loading... we'll hook the sound bank load func and check if we have our matching .one file IDs
+// 2C4C60 -- uLoadSoundBank
+// 82068C -- hook loc
+// hook to patch the bank ID -- JP voices use 3C and 3D, EN use 3E and 3F. To avoid patching the hardcoded values everywhere, we patch the bank data as it's loading...
+patch=1,EE,2082068C,extended,80C3025A // lb v1, 0x25A(a2)
+patch=1,EE,20820690,extended,24630002 // addiu v1, 0x2
+patch=1,EE,20820694,extended,24020002 // li v0, 2 // if werehog bank
+patch=1,EE,20820698,extended,50520004 // beql v0, s2, 0x8206AC (contpoint)
+patch=1,EE,2082069C,extended,A0C3025A // sb v1, 0x25A(a2)
+patch=1,EE,208206A0,extended,24020009 // li v0, 9 // if sonic bank
+patch=1,EE,208206A4,extended,50520001 // beql v0, s2, 0x8206AC (contpoint)
+patch=1,EE,208206A8,extended,A0C3025A // sb v1, 0x25A(a2)
+                                      // contpoint:
+patch=1,EE,208206AC,extended,080B1318 // j 0x2C4C60
+patch=1,EE,208206B0,extended,00000000 // nop
+// entrypoint
+patch=1,EE,200EB07C,extended,0C2081A3 // jal 0x82068C
+
 [60FPS Mode (BUGGY)]
 author=xan1242
 comment=Disables the frame limiter and allows the game to run in full 60Hz VSync frametime. NOTE: The game will have a lot of timescale bugs!
