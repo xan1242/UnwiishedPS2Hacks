@@ -47,3 +47,14 @@ patch=1,EE,20371E34,extended,24020001
 author=xan1242
 comment=Forces std.IsDebug() to return true
 patch=1,EE,20308CA4,extended,24020001
+
+[Fix DebugSelect Sonic Action]
+author=xan1242
+comment=Corrects the mode ID for Sonic Action in the DebugSelect mode (aka Make Mode)
+patch=1,EE,20754740,extended,00000004
+
+[Replace DebugSelect Screen Change option with CSD Viewer]
+author=xan1242
+comment=Replaces the "Screen Change" option the CSD Viewer mode
+patch=1,EE,207549D4,extended,0000001E
+patch=1,EE,207549DC,bytes,4353442056696577657200
