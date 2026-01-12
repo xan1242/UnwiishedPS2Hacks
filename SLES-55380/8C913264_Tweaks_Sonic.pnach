@@ -26,6 +26,9 @@ patch=1,EE,201C5080,extended,00000000
 author=xan1242
 comment=Disables automatic sliding on slopes/walls.
 patch=1,EE,201B6370,extended,10000038
+// disable auto slide on slope when landing into a squat
+patch=1,EE,201B4308,extended,10000021
+patch=1,EE,2029C848,extended,10000038
 
 [Disable Hitstop/Slowdown On Boost Damage]
 author=xan1242
