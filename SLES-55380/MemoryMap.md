@@ -43,3 +43,9 @@ NOTE: this may not be accurate to the latest version/commit as it's updated by h
 | 820668            | 82068C          | 24       | Hook | Werehog howl on unleash hook                                   |
 | 82068C            | 8206B4          | 28       | Hook | JP voice sound bank ID patcher                                 |
 | 8206B4            | 8206D0          | 1C       | Free | free space                                                     |
+| 836CF0            | 836E10          | 120      | Var  | UnwiishedPS2Debug - nnsPrintSvrObj                             |
+| 836E10            | 836E1C          | C        | Hook | bGetTicker                                                     |
+| 836E1C            | 836E74          | 58       | Hook | bGetTickerDifference                                           |
+| 836E74            | 836EE8          | 74       | Hook | Custom frametime sync                                          |
+| 836EE8            | 836EFC          | 14       | Hook | Frametime initialize value hook                                |
+| 836EFC            | 837450          | 554      | Free | free space                                                     |

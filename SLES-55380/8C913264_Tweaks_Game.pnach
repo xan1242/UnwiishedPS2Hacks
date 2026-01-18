@@ -11,6 +11,72 @@ comment=Force-enables progressive scan output after the game initializes.
 patch=1,EE,204FF78C,extended,0C1404C0
 patch=1,EE,204FF790,extended,24040002 // 0 = NTSC, 1 = PAL, 2 = NTSC Progressive
 
+[Improved Frame Syncing]
+author=xan1242
+comment=Replaces the frame syncing function with a new implementation which should yield in more consistent frame pacing.
+// bGetTicker -- bWare function, gets the current CPU tick counter
+patch=1,EE,20836E10,bytes,004802400800E00300000000
+// bGetTickerDifference -- bWare function, returns a float value of the difference between 2 CPU tick values in milliseconds
+patch=1,EE,20836E1C,bytes,2B10A4002310A400050040044218020000108244A01080460600001000000000010042302510430000108244A0108046801002465F36013C3BB2213400008144823F013C3A23213400088144021000460800E00302000146
+// PS2Skeleton Sync replacement
+patch=1,EE,20836E74,extended,3C020087  // lui v0, 0x87
+patch=1,EE,20836E78,extended,8C430A1C  // lw v1, 0xA1C(v0) // get the current game mode, fall back to original sync for any movie-related modes (attract, movie, credit)
+patch=1,EE,20836E7C,extended,2462FFF4  // addiu v0, v1, -0xC
+patch=1,EE,20836E80,extended,2C420002  // sltiu v0, 2
+patch=1,EE,20836E84,extended,14400016  // bnez v0, loc_regularSync
+patch=1,EE,20836E88,extended,00000000  // nop
+patch=1,EE,20836E8C,extended,24020010  // li v0, 0x10
+patch=1,EE,20836E90,extended,10620013  // beq v1, v0, loc_regularSync
+patch=1,EE,20836E94,extended,00000000  // nop
+patch=1,EE,20836E98,extended,27BDFFF0  // addiu sp, -0x10
+patch=1,EE,20836E9C,extended,FFBF0000  // sd ra, 0(sp)
+patch=1,EE,20836EA0,extended,3C190082  // lui t9, 0x82
+                                       // loc_Loop:
+patch=1,EE,20836EA4,extended,0C20DB84  // jal 0x836E10 (bGetTicker)
+patch=1,EE,20836EA8,extended,8F240498  // lw a0, 0x498(t9)
+patch=1,EE,20836EAC,extended,0C20DB87  // jal 0x836E1C (bGetTickerDifference)
+patch=1,EE,20836EB0,extended,00402825  // move a1, v0
+patch=1,EE,20836EB4,extended,C721049C  // lwc1 f1, 0x49C(t9)
+patch=1,EE,20836EB8,extended,46000836  // c.le.s f1, f0
+patch=1,EE,20836EBC,extended,00000000  // nop
+patch=1,EE,20836EC0,extended,4500FFF8  // bc1f loc_Loop
+patch=1,EE,20836EC4,extended,00000000  // nop
+patch=1,EE,20836EC8,extended,0C20DB84  // jal 0x836E10 (bGetTicker)
+patch=1,EE,20836ECC,extended,00000000  // nop
+patch=1,EE,20836ED0,extended,AF220498  // sw v0, 0x498(t9)
+patch=1,EE,20836ED4,extended,DFBF0000  // ld ra, 0(sp)
+patch=1,EE,20836ED8,extended,03E00008  // jr ra
+patch=1,EE,20836EDC,extended,27BD0010  // addiu sp, 0x10
+                                       // loc_regularSync:
+patch=1,EE,20836EE0,extended,081403A0  // j 0x500E80 (uPS2Skeleton_Sync)
+patch=1,EE,20836EE4,extended,00000000  // nop
+// entrypoint
+patch=1,EE,20500E10,extended,0C20DB9D
+// update frametime based on current FPS limit
+patch=0,EE,200D91FC,extended,3C01447A // lui at, 0x447A
+patch=0,EE,200D9204,extended,44811000 // mtc1 at, f2
+patch=0,EE,200D920C,extended,46011083 // div.s f2, f2, f1
+patch=0,EE,200D9210,extended,3C020082 // lui v0, 0x82
+patch=0,EE,200D9214,extended,8F390034 // lw t9, 0x34(t9)
+patch=0,EE,200D9218,extended,03200008 // jr t9
+patch=0,EE,200D921C,extended,E442049C // swc1 f2, 0x49C(v0)
+// initialize frametime value hook
+patch=0,EE,20836EE8,extended,3C030082 // lui $v1, 0x82
+patch=0,EE,20836EEC,extended,3C024185 // lui $v0, 0x4185
+patch=0,EE,20836EF0,extended,24425555 // addiu $v0, $v0, 0x5555
+patch=0,EE,20836EF4,extended,03E00008 // jr $ra
+patch=0,EE,20836EF8,extended,AC62049C // sw $v0, 0x49C($v1)
+// entrypoint for init hook
+patch=0,EE,204FF6BC,extended,0C20DBBA // jal 0x836EE8
+
+[PAL 30FPS]
+author=xan1242
+comment=Uses 30FPS instead of 25FPS on PAL.
+patch=1,EE,200D91AC,extended,00401821
+patch=1,EE,200D91B0,extended,00000000
+patch=1,EE,200D91B4,extended,10000003
+patch=1,EE,200D91B8,extended,00000000
+
 [640x448]
 author=xan1242
 comment=Sets the screen resolution to 640x448
