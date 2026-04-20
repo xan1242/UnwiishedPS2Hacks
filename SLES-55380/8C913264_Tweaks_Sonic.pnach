@@ -50,7 +50,7 @@ patch=1,EE,2075D010,extended,0000001E
 // Level 2 (default: 60 dec, 3C hex)
 patch=1,EE,2075D014,extended,0000003C
 // Level 3 (default: 90 dec, 5A hex)
-patch=1,EE,2075D01C,extended,0000005A
+patch=1,EE,2075D018,extended,0000005A
 
 [Allow Lightspeed Dash Activation While Boosting]
 author=xan1242
