@@ -43,7 +43,7 @@ patch=1,EE,201B67E8,extended,10000005
 [Set Boost Level-Up Points]
 author=xan1242
 comment=Allows you to control the ring requirement for each boost level up. Edit this cheat with your own values. Defaults are set with game's default values.
-// If you want to disable any given level, set the value to be -1 (FFFFFFFF). 
+// If you want to disable any given level, set the value to be really big, e.g. uint32 max (FFFFFFFF). 
 // To convert values from decimal (base 10) to hexadecimal (base 16) easily, you can use a calculator in Programmer mode.
 // Level 1 (default: 30 dec, 1E hex)
 patch=1,EE,2075D010,extended,0000001E
